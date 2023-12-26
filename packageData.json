@@ -27,21 +27,21 @@
             },
             "type": "disable"
         },
+        "DevToys": {
+            "description": "開發者工具集合，包含了許多常用的開發者工具",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install devtoys -y"
+            },
+            "type": "disable"
+        },
         "Docker": {
             "description": "虛擬化容器工具，會同時安裝 docker & docker-compose",
             "install": {
                 "linux": "sudo apt install docker.io -y && sudo apt install docker-compose -y",
                 "mac": "brew install --cask docker && brew install docker-compose",
                 "windows": "choco install docker-desktop -y && choco install docker-compose -y"
-            },
-            "type": "enable"
-        },
-        "dotnet-sdk": {
-            "description": "",
-            "install": {
-                "linux": "sudo apt install dotnet-sdk -y",
-                "mac": "brew install --cask dotnet-sdk",
-                "windows": "choco install dotnet-sdk -y"
             },
             "type": "enable"
         },
@@ -54,23 +54,14 @@
             },
             "type": "disable"
         },
-        "gcc": {
-            "description": "C / C++ 編譯器",
+        "Flutter": {
+            "description": "",
             "install": {
-                "linux": "",
-                "mac": "",
-                "windows": "choco install mingw -y"
+                "linux": "asdf plugin add flutter && asdf install flutter latest && asdf global flutter latest",
+                "mac": "asdf plugin add flutter && asdf install flutter latest && asdf global flutter latest",
+                "windows": "choco install flutter -y"
             },
-            "type": "enable"
-        },
-        "gcc-arm-none-eabi": {
-            "description": "ARM 編譯器",
-            "install": {
-                "linux": "sudo apt install gcc-arm-none-eabi -y",
-                "mac": "brew install --cask gcc-arm-embedded",
-                "windows": "choco install gcc-arm-embedded -y"
-            },
-            "type": "enable"
+            "type": "disable"
         },
         "Git": {
             "description": "",
@@ -81,14 +72,14 @@
             },
             "type": "force"
         },
-        "ilspy": {
-            "description": "C# 反編譯工具",
+        "Golang": {
+            "description": "",
             "install": {
-                "linux": "",
-                "mac": "",
-                "windows": "choco install ilspy -y"
+                "linux": "asdf plugin add golang && asdf install golang 1.20 && asdf global golang 1.20",
+                "mac": "brew install coreutils && asdf plugin add golang && asdf install golang 1.20 && asdf global golang 1.20",
+                "windows": "choco install golang -y"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "ImageJ": {
             "description": "基於 Java 的圖像處理軟體",
@@ -117,12 +108,12 @@
             },
             "type": "enable"
         },
-        "make": {
-            "description": "",
+        "LazyDocker": {
+            "description": "一個簡單的終端機使用者介面，適用於 docker 與 docker-compose",
             "install": {
-                "linux": "sudo apt install make -y",
-                "mac": "brew install make",
-                "windows": "choco install make -y"
+                "linux": "asdf install lazydocker latest && asdf global lazydocker latest",
+                "mac": "asdf install lazydocker latest && asdf global lazydocker latest",
+                "windows": "choco install lazydocker -y"
             },
             "type": "enable"
         },
@@ -134,6 +125,15 @@
                 "windows": "choco install miniconda3 -y --params=\"'/AddToPath:1 /RegisterPython:0 /InstallationType:JustMe'\""
             },
             "type": "disable"
+        },
+        "MobaXTerm": {
+            "description": "終端機工具，類似於 PuTTY",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install mobaxterm -y"
+            },
+            "type": "enable"
         },
         "Node.js": {
             "description": "",
@@ -153,6 +153,15 @@
             },
             "type": "enable"
         },
+        "Pandoc": {
+            "description": "文件轉換工具",
+            "install": {
+                "linux": "sudo apt install -y pandoc texlive-full",
+                "mac": "brew install pandoc && brew install --cask mactex-no-gui",
+                "windows": "choco install pandoc miktex -y"
+            },
+            "type": "enable"
+        },
         "PuTTY": {
             "description": "",
             "install": {
@@ -160,7 +169,16 @@
                 "mac": "",
                 "windows": "choco install putty -y"
             },
-            "type": "enable"
+            "type": "disable"
+        },
+        "PySide6": {
+            "description": "",
+            "install": {
+                "linux": "pip install --upgrade PySide6",
+                "mac": "pip install --upgrade PySide6",
+                "windows": "pip install --upgrade PySide6"
+            },
+            "type": "disable"
         },
         "Python": {
             "description": "",
@@ -170,6 +188,33 @@
                 "windows": "choco install python310 -y"
             },
             "type": "force"
+        },
+        "Rust": {
+            "description": "",
+            "install": {
+                "linux": "asdf plugin add rust && asdf install rust latest && asdf global rust latest",
+                "mac": "asdf plugin add rust && asdf install rust latest && asdf global rust latest",
+                "windows": "choco install rust -y"
+            },
+            "type": "force"
+        },
+        "Setuptools": {
+            "description": "Python tool that helps you easily download, build, install, upgrade, and uninstall Python packages",
+            "install": {
+                "linux": "pip install --upgrade setuptools",
+                "mac": "pip install --upgrade setuptools",
+                "windows": "pip install --upgrade setuptools"
+            },
+            "type": "disable"
+        },
+        "Sourcetree": {
+            "description": "Git GUI 軟體",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask sourcetree",
+                "windows": "choco install sourcetree -y"
+            },
+            "type": "disable"
         },
         "Sublime Text 4": {
             "description": "高效、多功能的文本編輯器",
@@ -187,7 +232,7 @@
                 "mac": "",
                 "windows": "choco install teraterm -y"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "Virtual Box": {
             "description": "自由及開放原始碼的虛擬機器軟體",
@@ -215,6 +260,78 @@
                 "windows": "choco install vscode -y"
             },
             "type": "enable"
+        },
+        "act-cli": {
+            "description": "GitHub Actions 的 CLI 工具",
+            "install": {
+                "linux": "",
+                "mac": "brew install act",
+                "windows": "choco install act-cli -y"
+            },
+            "type": "disable"
+        },
+        "commitizen": {
+            "description": "Git Commit 規範工具",
+            "install": {
+                "linux": "npm install -g commitizen cz-conventional-changelog conventional-changelog-cli && echo '{\"path\": \"cz-conventional-changelog\"}' > ~/.czrc",
+                "mac": "npm install -g commitizen cz-conventional-changelog conventional-changelog-cli && echo '{\"path\": \"cz-conventional-changelog\"}' > ~/.czrc",
+                "windows": "npm install -g commitizen cz-conventional-changelog conventional-changelog-cli && echo '{\"path\": \"cz-conventional-changelog\"}' | Out-File -Encoding utf8 $HOME\\.czrc"
+            },
+            "type": "enable"
+        },
+        "dotnet-sdk": {
+            "description": "",
+            "install": {
+                "linux": "sudo apt install dotnet-sdk -y",
+                "mac": "brew install --cask dotnet-sdk",
+                "windows": "choco install dotnet-sdk -y"
+            },
+            "type": "enable"
+        },
+        "gcc": {
+            "description": "C / C++ 編譯器",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install mingw -y"
+            },
+            "type": "enable"
+        },
+        "gcc-arm-none-eabi": {
+            "description": "ARM 編譯器",
+            "install": {
+                "linux": "sudo apt install gcc-arm-none-eabi -y",
+                "mac": "brew install --cask gcc-arm-embedded",
+                "windows": "choco install gcc-arm-embedded -y"
+            },
+            "type": "enable"
+        },
+        "ilspy": {
+            "description": "C# 反編譯工具",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install ilspy -y"
+            },
+            "type": "enable"
+        },
+        "make": {
+            "description": "",
+            "install": {
+                "linux": "sudo apt install make -y",
+                "mac": "brew install make",
+                "windows": "choco install make -y"
+            },
+            "type": "enable"
+        },
+        "pyOCD": {
+            "description": "Python OpenOCD",
+            "install": {
+                "linux": "pip install --upgrade pyocd",
+                "mac": "pip install --upgrade pyocd",
+                "windows": "pip install --upgrade pyocd"
+            },
+            "type": "disable"
         }
     },
     "MISC": {
@@ -296,15 +413,6 @@
                 "linux": "",
                 "mac": "",
                 "windows": "choco install everything -y"
-            },
-            "type": "enable"
-        },
-        "ffmepg": {
-            "description": "影片處理 CLI 工具",
-            "install": {
-                "linux": "sudo apt install ffmpeg -y",
-                "mac": "brew install ffmpeg",
-                "windows": "choco install ffmpeg -y"
             },
             "type": "enable"
         },
@@ -425,15 +533,6 @@
             },
             "type": "enable"
         },
-        "pdf2svg": {
-            "description": "",
-            "install": {
-                "linux": "",
-                "mac": "",
-                "windows": "choco install pdf2svg -y --ignore-checksums"
-            },
-            "type": "disable"
-        },
         "PDF24": {
             "description": "PDF 處理軟體",
             "install": {
@@ -443,14 +542,14 @@
             },
             "type": "enable"
         },
-        "PDFtk": {
-            "description": "",
+        "Parsec": {
+            "description": "遠端桌面軟體 (近乎零延遲)",
             "install": {
                 "linux": "",
-                "mac": "",
-                "windows": "choco install pdftk -y"
+                "mac": "brew install --cask parsec",
+                "windows": "choco install parsec -y"
             },
-            "type": "disable"
+            "type": "enable"
         },
         "PowerToys": {
             "description": "Windows 10 / 11 的實用小工具",
@@ -460,15 +559,6 @@
                 "windows": "choco install powertoys -y"
             },
             "type": "enable"
-        },
-        "Prince": {
-            "description": "",
-            "install": {
-                "linux": "",
-                "mac": "",
-                "windows": "choco install prince -y"
-            },
-            "type": "disable"
         },
         "QuickLook": {
             "description": "類似於 macOS 的快速預覽工具",
@@ -521,6 +611,15 @@
                 "linux": "",
                 "mac": "brew install --cask vlc",
                 "windows": "choco install potplayer -y"
+            },
+            "type": "enable"
+        },
+        "ffmepg": {
+            "description": "影片處理 CLI 工具",
+            "install": {
+                "linux": "sudo apt install ffmpeg -y",
+                "mac": "brew install ffmpeg",
+                "windows": "choco install ffmpeg -y"
             },
             "type": "enable"
         },

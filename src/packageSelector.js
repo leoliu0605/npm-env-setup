@@ -53,7 +53,10 @@ export async function selectPackages() {
                 .map(([packageName, _]) => packageName)
         );
 
-        const selectedPackages = [...new Set([...forcedPackages, ...answers.selectedPackages])];
+        // Remove the description from the selected packages
+        const cleanedSelectedPackages = answers.selectedPackages.map((packageName) => packageName.replace(/ - .*/, ""));
+
+        const selectedPackages = [...forcedPackages, ...cleanedSelectedPackages];
 
         return selectedPackages
             .map((packageName) => {
