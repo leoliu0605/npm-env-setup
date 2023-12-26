@@ -1,0 +1,537 @@
+{
+    "Development": {
+        "Android Studio": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask android-studio",
+                "windows": "choco install androidstudio -y"
+            },
+            "type": "enable"
+        },
+        "Beyond Compare": {
+            "description": "用來做檔案差異比較的 GUI 軟體",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask beyond-compare",
+                "windows": "choco install beyondcompare -y"
+            },
+            "type": "enable"
+        },
+        "Cuda": {
+            "description": "控制 NVIDIA GPU 的 CLI 工具",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install cuda -y"
+            },
+            "type": "disable"
+        },
+        "Docker": {
+            "description": "虛擬化容器工具，會同時安裝 docker & docker-compose",
+            "install": {
+                "linux": "sudo apt install docker.io -y && sudo apt install docker-compose -y",
+                "mac": "brew install --cask docker && brew install docker-compose",
+                "windows": "choco install docker-desktop -y && choco install docker-compose -y"
+            },
+            "type": "enable"
+        },
+        "dotnet-sdk": {
+            "description": "",
+            "install": {
+                "linux": "sudo apt install dotnet-sdk -y",
+                "mac": "brew install --cask dotnet-sdk",
+                "windows": "choco install dotnet-sdk -y"
+            },
+            "type": "enable"
+        },
+        "FileZilla": {
+            "description": "免費的 FTP 用戶端軟體",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install filezilla -y"
+            },
+            "type": "disable"
+        },
+        "gcc": {
+            "description": "C / C++ 編譯器",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install mingw -y"
+            },
+            "type": "enable"
+        },
+        "gcc-arm-none-eabi": {
+            "description": "ARM 編譯器",
+            "install": {
+                "linux": "sudo apt install gcc-arm-none-eabi -y",
+                "mac": "brew install --cask gcc-arm-embedded",
+                "windows": "choco install gcc-arm-embedded -y"
+            },
+            "type": "enable"
+        },
+        "Git": {
+            "description": "",
+            "install": {
+                "linux": "sudo apt install git -y",
+                "mac": "brew install git",
+                "windows": "choco install git -y"
+            },
+            "type": "force"
+        },
+        "ilspy": {
+            "description": "C# 反編譯工具",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install ilspy -y"
+            },
+            "type": "enable"
+        },
+        "ImageJ": {
+            "description": "基於 Java 的圖像處理軟體",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install imagej -y"
+            },
+            "type": "enable"
+        },
+        "KiCad": {
+            "description": "繪製電路原理圖和印刷電路板設計的自由軟體",
+            "install": {
+                "linux": "sudo add-apt-repository ppa:kicad/kicad-7.0-releases -y && sudo apt update && sudo apt install kicad -y",
+                "mac": "brew install --cask kicad",
+                "windows": "choco install kicad -y"
+            },
+            "type": "enable"
+        },
+        "LINQPad 7": {
+            "description": "一款強大的 .NET 程式碼編輯器",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install linqpad7 -y --ignore-checksums"
+            },
+            "type": "enable"
+        },
+        "make": {
+            "description": "",
+            "install": {
+                "linux": "sudo apt install make -y",
+                "mac": "brew install make",
+                "windows": "choco install make -y"
+            },
+            "type": "enable"
+        },
+        "Miniconda 3": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install miniconda3 -y --params=\"'/AddToPath:1 /RegisterPython:0 /InstallationType:JustMe'\""
+            },
+            "type": "disable"
+        },
+        "Node.js": {
+            "description": "",
+            "install": {
+                "linux": "asdf plugin add nodejs && asdf install nodejs 16.20.2 && asdf global nodejs 16.20.2",
+                "mac": "asdf plugin add nodejs && asdf install nodejs 18.18.0 && asdf global nodejs 18.18.0",
+                "windows": "choco install nodejs-lts -y"
+            },
+            "type": "force"
+        },
+        "OpenSSH": {
+            "description": "",
+            "install": {
+                "linux": "sudo apt install openssh-server -y",
+                "mac": "",
+                "windows": ""
+            },
+            "type": "enable"
+        },
+        "PuTTY": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install putty -y"
+            },
+            "type": "enable"
+        },
+        "Python": {
+            "description": "",
+            "install": {
+                "linux": "asdf plugin add python && asdf install python 3.10.0 && asdf global python 3.10.0",
+                "mac": "asdf plugin add python && asdf install python 3.10.0 && asdf global python 3.10.0",
+                "windows": "choco install python310 -y"
+            },
+            "type": "force"
+        },
+        "Sublime Text 4": {
+            "description": "高效、多功能的文本編輯器",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install sublimetext4 -y"
+            },
+            "type": "enable"
+        },
+        "Tera Term": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install teraterm -y"
+            },
+            "type": "enable"
+        },
+        "Virtual Box": {
+            "description": "自由及開放原始碼的虛擬機器軟體",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install virtualbox -y"
+            },
+            "type": "enable"
+        },
+        "Visual Studio 2022 Community": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install visualstudio2022community -y"
+            },
+            "type": "enable"
+        },
+        "Visual Studio Code": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask visual-studio-code",
+                "windows": "choco install vscode -y"
+            },
+            "type": "enable"
+        }
+    },
+    "MISC": {
+        "7-Zip": {
+            "description": "壓縮程式",
+            "install": {
+                "linux": "",
+                "mac": "brew install p7zip",
+                "windows": "choco install 7zip -y"
+            },
+            "type": "enable"
+        },
+        "Adobe Creative Cloud": {
+            "description": "Adobe 軟體管理工具",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask adobe-creative-cloud",
+                "windows": ""
+            },
+            "type": "enable"
+        },
+        "Adobe Reader": {
+            "description": "PDF 閱讀器",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask adobe-acrobat-reader",
+                "windows": "choco install adobereader -y"
+            },
+            "type": "enable"
+        },
+        "Anydesk": {
+            "description": "遠端桌面軟體",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask anydesk",
+                "windows": "choco install anydesk -y"
+            },
+            "type": "enable"
+        },
+        "Bandizip": {
+            "description": "好看的壓縮程式",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install bandizip -y"
+            },
+            "type": "enable"
+        },
+        "CPU-Z": {
+            "description": "CPU 資訊檢視工具",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install cpu-z -y"
+            },
+            "type": "disable"
+        },
+        "CrystalDiskMark": {
+            "description": "硬碟效能檢測工具",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install crystaldiskmark -y"
+            },
+            "type": "disable"
+        },
+        "Discord": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask discord",
+                "windows": "choco install discord -y"
+            },
+            "type": "enable"
+        },
+        "Everything": {
+            "description": "免費 Windows 搜尋引擎，搜尋速度快",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install everything -y"
+            },
+            "type": "enable"
+        },
+        "ffmepg": {
+            "description": "影片處理 CLI 工具",
+            "install": {
+                "linux": "sudo apt install ffmpeg -y",
+                "mac": "brew install ffmpeg",
+                "windows": "choco install ffmpeg -y"
+            },
+            "type": "enable"
+        },
+        "Fira Code": {
+            "description": "好看的程式碼字型",
+            "install": {
+                "linux": "",
+                "mac": "brew tap homebrew/cask-fonts && brew install --cask font-fira-code",
+                "windows": "choco install firacode -y"
+            },
+            "type": "force"
+        },
+        "Folder Size": {
+            "description": "資料夾大小檢視工具",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install folder_size -y"
+            },
+            "type": "disable"
+        },
+        "Google Drive": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask google-drive",
+                "windows": "choco install googledrive -y"
+            },
+            "type": "enable"
+        },
+        "Hugo": {
+            "description": "靜態網站產生器",
+            "install": {
+                "linux": "sudo apt install hugo -y",
+                "mac": "brew install hugo",
+                "windows": "choco install hugo-extended -y"
+            },
+            "type": "enable"
+        },
+        "Inkscape": {
+            "description": "免費向量繪圖軟體，類似 Adobe Illustrator",
+            "install": {
+                "linux": "sudo apt install inkscape -y",
+                "mac": "brew install --cask inkscape",
+                "windows": "choco install inkscape -y"
+            },
+            "type": "enable"
+        },
+        "Keyviz": {
+            "description": "按鍵可視化工具，它可以實時顯示用戶當前按下的按鍵。",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "winget install mulaRahul.Keyviz"
+            },
+            "type": "enable"
+        },
+        "Krita": {
+            "description": "免費的數位繪圖軟體，類似 Adobe Photoshop",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask krita",
+                "windows": "choco install krita -y"
+            },
+            "type": "enable"
+        },
+        "Logi Options+": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask logi-options-plus",
+                "windows": "choco install logioptionsplus -y"
+            },
+            "type": "enable"
+        },
+        "Logitech G HUB": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask logitech-g-hub",
+                "windows": ""
+            },
+            "type": "enable"
+        },
+        "Mega Downloader": {
+            "description": "Mega.nz 下載器",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install megadownloader -y"
+            },
+            "type": "disable"
+        },
+        "Microsoft Edge": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask microsoft-edge",
+                "windows": ""
+            },
+            "type": "enable"
+        },
+        "Notion": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask notion",
+                "windows": "choco install notion -y"
+            },
+            "type": "disable"
+        },
+        "OBS Studio": {
+            "description": "開源的串流軟體",
+            "install": {
+                "linux": "sudo add-apt-repository ppa:obsproject/obs-studio -y && sudo apt update && sudo apt install obs-studio -y",
+                "mac": "brew install --cask obs",
+                "windows": "choco install obs-studio -y"
+            },
+            "type": "enable"
+        },
+        "pdf2svg": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install pdf2svg -y --ignore-checksums"
+            },
+            "type": "disable"
+        },
+        "PDF24": {
+            "description": "PDF 處理軟體",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install pdf24 -y"
+            },
+            "type": "enable"
+        },
+        "PDFtk": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install pdftk -y"
+            },
+            "type": "disable"
+        },
+        "PowerToys": {
+            "description": "Windows 10 / 11 的實用小工具",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install powertoys -y"
+            },
+            "type": "enable"
+        },
+        "Prince": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install prince -y"
+            },
+            "type": "disable"
+        },
+        "QuickLook": {
+            "description": "類似於 macOS 的快速預覽工具",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install quicklook -y"
+            },
+            "type": "enable"
+        },
+        "Revo Uninstaller": {
+            "description": "Windows 的軟體卸載工具",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "choco install revo-uninstaller -y"
+            },
+            "type": "enable"
+        },
+        "Spotify": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask spotify",
+                "windows": "choco install spotify -y"
+            },
+            "type": "enable"
+        },
+        "Telegram": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask telegram-desktop",
+                "windows": "choco install telegram -y"
+            },
+            "type": "enable"
+        },
+        "The Unarchiver": {
+            "description": "macOS 的解壓縮軟體",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask the-unarchiver",
+                "windows": ""
+            },
+            "type": "enable"
+        },
+        "Video Player": {
+            "description": "macOS 安裝 VLC ; Windows 安裝 PotPlayer",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask vlc",
+                "windows": "choco install potplayer -y"
+            },
+            "type": "enable"
+        },
+        "yt-dlp": {
+            "description": "YouTube 影片下載 CLI 工具",
+            "install": {
+                "linux": "sudo apt install yt-dlp -y",
+                "mac": "brew install yt-dlp",
+                "windows": "choco install yt-dlp -y"
+            },
+            "type": "enable"
+        }
+    }
+}
