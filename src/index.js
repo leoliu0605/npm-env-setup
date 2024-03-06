@@ -52,13 +52,14 @@ selectPackages()
             command = 'powershell.exe';
             args = ['-NoProfile', '-EncodedCommand', encodedPsScript];
         } else if (os.platform() === 'darwin') {
+            console.log('MacOS detected');
         } else if (os.platform() === 'linux') {
             const distro = os
                 .release()
                 .split('.')
                 .map((v) => parseInt(v));
             console.log('Linux distribution version:', distro);
-            if (distro[0] === 20 && distro[1] === 4) {
+            if (distro[0] >= 20 /* && distro[1] === 4 */) {
                 console.log('Ubuntu 20.04 detected');
             } else {
                 console.log('Ubuntu 20.04 not detected');
