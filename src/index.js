@@ -67,13 +67,13 @@ selectPackages()
 
         console.log(`command: ${command}`);
         console.log(`args: ${args}`);
-        // cmd(command, args)
-        //     .then(() => {
-        //         console.log("Success executing scripts");
-        //     })
-        //     .catch((error) => {
-        //         console.error("Error executing scripts:", error);
-        //     });
+        cmd(command, args)
+            .then(() => {
+                console.log("Success executing scripts");
+            })
+            .catch((error) => {
+                console.error("Error executing scripts:", error);
+            });
     })
     .catch((error) => {
         console.error('Error selecting packages:', error);
