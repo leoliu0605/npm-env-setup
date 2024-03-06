@@ -4,7 +4,7 @@ import fs from 'fs';
 import os from 'os';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import cmd from './cmd_process.js';
+import { cmd } from './cmd_process.js';
 import { selectPackages } from './package_selector.js';
 import PowerShell from './powershell.js';
 
@@ -46,9 +46,9 @@ selectPackages()
             ps.addCommand('refreshenv\n'); // for powershell to refresh environment variables
 
             const psScript = ps.getScripts();
-            fs.writeFileSync(path.join(__dirname, 'scripts.ps1.log'), psScript);
+            // fs.writeFileSync(path.join(__dirname, 'scripts.ps1.log'), psScript);
 
-            const encodedPsScript = Buffer.from(psScript).toString('base64');
+            const encodedPsScript = Buffer.from(psScript, 'utf16le').toString('base64');
             command = 'powershell.exe';
             args = ['-NoProfile', '-EncodedCommand', encodedPsScript];
         } else if (os.platform() === 'darwin') {
@@ -69,10 +69,10 @@ selectPackages()
         console.log(`args: ${args}`);
         cmd(command, args)
             .then(() => {
-                console.log("Success executing scripts");
+                console.log('Success executing scripts');
             })
             .catch((error) => {
-                console.error("Error executing scripts:", error);
+                console.error('Error executing scripts:', error);
             });
     })
     .catch((error) => {

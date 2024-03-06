@@ -1,8 +1,8 @@
 import { spawn } from "child_process";
 
-function cmd(command, args) {
+export function cmd(command, args) {
     return new Promise((resolve, reject) => {
-        const process = spawn(command, args, { shell: true });
+        const process = spawn(command, args);
 
         process.stdout.on("data", (data) => {
             console.log(data.toString());
@@ -21,5 +21,3 @@ function cmd(command, args) {
         });
     });
 }
-
-export default { cmd };

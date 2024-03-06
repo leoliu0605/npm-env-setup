@@ -41,7 +41,7 @@
             "install": {
                 "linux": "sudo apt install docker.io -y && sudo apt install docker-compose -y",
                 "mac": "brew install --cask docker && brew install docker-compose",
-                "windows": "choco install docker-desktop -y && choco install docker-compose -y"
+                "windows": "choco install docker-desktop -y ; choco install docker-compose -y"
             },
             "type": "enable"
         },
@@ -275,7 +275,7 @@
             "install": {
                 "linux": "npm install -g commitizen cz-conventional-changelog conventional-changelog-cli && echo '{\"path\": \"cz-conventional-changelog\"}' > ~/.czrc",
                 "mac": "npm install -g commitizen cz-conventional-changelog conventional-changelog-cli && echo '{\"path\": \"cz-conventional-changelog\"}' > ~/.czrc",
-                "windows": "npm install -g commitizen cz-conventional-changelog conventional-changelog-cli && echo '{\"path\": \"cz-conventional-changelog\"}' | Out-File -Encoding utf8 $HOME\\.czrc"
+                "windows": "npm install -g commitizen cz-conventional-changelog conventional-changelog-cli ; echo '{\"path\": \"cz-conventional-changelog\"}' | Out-File -Encoding utf8 $HOME\\.czrc"
             },
             "type": "enable"
         },
