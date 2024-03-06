@@ -23,8 +23,13 @@ jobs:
               run: |
                   npm install -g pnpm
                   pnpm install
-              shell: ${{ matrix.os == 'windows-latest' && 'powershell' || 'bash' }}
             - name: Run tests
               run: |
-                  npm test
-              shell: ${{ matrix.os == 'windows-latest' && 'powershell' || 'bash' }}
+                  npm run test
+              shell: bash
+              if: ${{ matrix.os != 'windows-latest' }}
+            - name: Run tests (Windows)
+              run: |
+                  npm run test
+              shell: powershell
+              if: ${{ matrix.os == 'windows-latest' }}
