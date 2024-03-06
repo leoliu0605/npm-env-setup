@@ -25,6 +25,7 @@
   ],
   "homepage": "https://github.com/leoli0605/npm-env-setup",
   "scripts": {
+    "start": "pnpm install && node ./src/index.js",
     "test": "pnpm install && node ./test/test.js"
   },
   "author": "Leo Li",
