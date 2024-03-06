@@ -8,18 +8,23 @@ on:
 
 jobs:
     build:
-        runs-on: windows-latest
-
+        runs-on: ${{ matrix.os }}
         strategy:
             matrix:
+                os: [windows-latest, macos-latest, ubuntu-latest]
                 node-version: [16, 18, 20]
-
         steps:
             - uses: actions/checkout@v4
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v4
               with:
                   node-version: ${{ matrix.node-version }}
-            - run: |
-                    npm install -g pnpm
-                    npm test
+            - name: Install dependencies
+              run: |
+                  npm install -g pnpm
+                  pnpm install
+              shell: ${{ matrix.os == 'windows-latest' && 'powershell' || 'bash' }}
+            - name: Run tests
+              run: |
+                  npm test
+              shell: ${{ matrix.os == 'windows-latest' && 'powershell' || 'bash' }}
