@@ -6,7 +6,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const child = spawn('node', [path.join(__dirname, '../src/index.js')]);
 
-child.stdin.write('a\n');
+child.stdin.write('aa\n');
 
 child.stdout.on('data', (data) => {
     console.log(`stdout: ${data}`);
