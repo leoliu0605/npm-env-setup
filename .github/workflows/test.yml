@@ -12,7 +12,7 @@ jobs:
         runs-on: ${{ matrix.os }}
         strategy:
             matrix:
-                os: [windows-latest, macos-latest, ubuntu-latest]
+                os: [windows-latest, macos-latest, ubuntu-latest, macos-14]
                 node-version: [16, 18, 20]
         steps:
             - uses: actions/checkout@v4
@@ -25,12 +25,12 @@ jobs:
                   npm install -g pnpm
                   pnpm install
             - name: Run tests
+              if: ${{ matrix.os != 'windows-latest' }}
               run: |
                   npm run test
               shell: bash
-              if: ${{ matrix.os != 'windows-latest' }}
             - name: Run tests (Windows)
+              if: ${{ matrix.os == 'windows-latest' }}
               run: |
                   npm run test
               shell: powershell
-              if: ${{ matrix.os == 'windows-latest' }}
