@@ -4,18 +4,20 @@
 
 #### Windows
 
-```powershell
-winget install OpenJS.NodeJS.LTS && npm install @leoli0605/env-setup -g && npx env-setup
+```shell
+winget install OpenJS.NodeJS.LTS && npm install @leoli0605/env-setup -g && npx @leoli0605/env-setup
 ```
 
 #### MacOS
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && brew install node && npm install @leoli0605/env-setup -g && npx env-setup
+curl "https://nodejs.org/dist/latest-v20.x/$(curl -s https://nodejs.org/dist/latest-v20.x/ | grep "pkg" | cut -d'"' -f 2)" -o "$HOME/Downloads/node-latest.pkg" && sudo installer -store -pkg "$HOME/Downloads/node-latest.pkg" -target "/" && /usr/local/bin/npm install @leoli0605/env-setup -g && npx @leoli0605/env-setup
 ```
 
-#### Linux
+#### Linux (Ubuntu 20.04 LTS and later)
 
 ```bash
-sudo apt update && sudo apt install nodejs -y && npm install @leoli0605/env-setup -g && npx env-setup
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && \
+sudo apt-get install -y nodejs && \
+npm install @leoli0605/env-setup -g && npx @leoli0605/env-setup
 ```
