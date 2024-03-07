@@ -1,18 +1,27 @@
-import { spawn } from "child_process";
+import { spawn } from 'child_process';
+
+let stdioConfig = ['pipe', 'pipe', 'pipe'];
+if (process.env.NODE_ENV === 'test') {
+    stdioConfig = 'inherit';
+}
 
 export function cmd(command, args) {
     return new Promise((resolve, reject) => {
-        const process = spawn(command, args);
-
-        process.stdout.on("data", (data) => {
-            console.log(data.toString());
+        const child = spawn(command, args, {
+            stdio: stdioConfig,
         });
 
-        process.stderr.on("data", (data) => {
-            console.error(data.toString());
-        });
+        if (stdioConfig !== 'inherit') {
+            child.stdout.on('data', (data) => {
+                console.log(data.toString());
+            });
 
-        process.on("close", (code) => {
+            child.stderr.on('data', (data) => {
+                console.error(data.toString());
+            });
+        }
+
+        child.on('close', (code) => {
             if (code === 0) {
                 resolve();
             } else {
