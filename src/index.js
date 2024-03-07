@@ -16,9 +16,6 @@ selectPackages()
         let args = [];
         if (os.platform() === 'win32') {
             const ps = new PowerShell();
-            ps.addEnvironment('$HOME\\AppData\\Roaming\\Python\\Scripts'); // for python
-            ps.addEnvironment('$HOME\\leoli\\.cargo\\bin'); // for rust
-
             for (const p of selectedPackages) {
                 if (p) {
                     ps.addCommand(p.installCommand);
@@ -26,16 +23,24 @@ selectPackages()
             }
             ps.addCommand('refreshenv\n'); // for powershell to refresh environment variables
 
-            ps.addCommand('python.exe -m pip install --upgrade pip'); // for pip
-            ps.addCommand('(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -'); // for poetry
-            ps.addCommand('poetry config virtualenvs.in-project true'); // for poetry
-            const pipSetup = fs.readFileSync(path.join(__dirname, '../scripts/pip.setup'), 'utf8').trim();
-            ps.addCommand(pipSetup);
+            if (selectedPackages.some((p) => p && p.packageName.startsWith('Python'))) {
+                ps.addEnvironment('$HOME\\AppData\\Roaming\\Python\\Scripts');
+                ps.addCommand('python.exe -m pip install --upgrade pip'); // for pip
+                ps.addCommand('(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -'); // for poetry
+                ps.addCommand('poetry config virtualenvs.in-project true'); // for poetry
+                const pipSetup = fs.readFileSync(path.join(__dirname, '../scripts/pip.setup'), 'utf8').trim();
+                ps.addCommand(pipSetup);
+            }
+            if (selectedPackages.some((p) => p && p.packageName.startsWith('Rust'))) {
+                ps.addEnvironment('$HOME\\leoli\\.cargo\\bin');
+            }
             ps.addCommand('refreshenv\n'); // for powershell to refresh environment variables
 
-            const npmSetup = fs.readFileSync(path.join(__dirname, '../scripts/npm.setup'), 'utf8').trim();
-            ps.addCommand(npmSetup);
-            ps.addCommand('npx @leoli0605/git-setup'); // for git
+            if (selectPackages.some((p) => p && p.packageName.startsWith('Node.js'))) {
+                const npmSetup = fs.readFileSync(path.join(__dirname, '../scripts/npm.setup'), 'utf8').trim();
+                ps.addCommand(npmSetup);
+                ps.addCommand('npx @leoli0605/git-setup'); // for git
+            }
             ps.addCommand('refreshenv\n'); // for powershell to refresh environment variables
 
             if (selectedPackages.some((p) => p && p.packageName.startsWith('Sublime Text'))) {
