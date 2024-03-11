@@ -1,20 +1,21 @@
 import fs from 'fs';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import ShellScript from './shell_script.js';
+import { getAppDir } from './dirname.mjs';
+import ShellScript from './shell_script.mjs';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = getAppDir();
 
 class PowerShell extends ShellScript {
     constructor() {
         super();
-        this.scripts.push(fs.readFileSync(path.join(__dirname, '../scripts/windows/RunAsAdministrator.ps1'), 'utf8') + '\n');
-        this.scripts.push(fs.readFileSync(path.join(__dirname, '../scripts/windows/Chocolatey.ps1'), 'utf8') + '\n');
+        this.scripts.push(fs.readFileSync(path.join(__dirname, 'scripts/windows/RunAsAdministrator.ps1'), 'utf8') + '\n');
+        this.scripts.push(fs.readFileSync(path.join(__dirname, 'scripts/windows/Chocolatey.ps1'), 'utf8') + '\n');
     }
 
     getScripts() {
         const paths = this.environment.map((e) => `"${e}"`).join(',\n    ');
-        let envSetup = fs.readFileSync(path.join(__dirname, '../scripts/windows/EnvSetup.ps1'), 'utf8');
+        let envSetup = fs.readFileSync(path.join(__dirname, 'scripts/windows/EnvSetup.ps1'), 'utf8');
         envSetup = envSetup.replace('${PATHS}', paths);
         this.scripts.push(envSetup + '\n');
         this.scripts.push(this.commands.join('\n'));

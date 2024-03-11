@@ -1,12 +1,10 @@
-// packageSelector.js
-
 import chalk from "chalk";
 import fs from "fs";
 import inquirer from "inquirer";
 import os from "os";
 
 export async function selectPackages() {
-    const packagesJson = fs.readFileSync("packageData.json", "utf8");
+    const packagesJson = fs.readFileSync(path.join(getAppDir(), 'packageData.json'), 'utf8');
     const packagesData = JSON.parse(packagesJson);
 
     const currentOS = os.platform() === "win32" ? "windows" : os.platform() === "darwin" ? "mac" : "linux";

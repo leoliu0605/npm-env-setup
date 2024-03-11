@@ -1,14 +1,13 @@
-// index.js
-
 import fs from 'fs';
 import os from 'os';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { cmd } from './cmd_process.js';
-import { selectPackages } from './package_selector.js';
-import PowerShell from './powershell.js';
+import { cmd } from './cmd_process.mjs';
+import { getAppDir } from './dirname.mjs';
+import { selectPackages } from './package_selector.mjs';
+import PowerShell from './powershell.mjs';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = getAppDir();
 
 selectPackages()
     .then((selectedPackages) => {
@@ -28,7 +27,7 @@ selectPackages()
                 ps.addCommand('python.exe -m pip install --upgrade pip'); // for pip
                 ps.addCommand('(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -'); // for poetry
                 ps.addCommand('poetry config virtualenvs.in-project true'); // for poetry
-                const pipSetup = fs.readFileSync(path.join(__dirname, '../scripts/pip.setup'), 'utf8').trim();
+                const pipSetup = fs.readFileSync(path.join(__dirname, 'scripts/pip.setup'), 'utf8').trim();
                 ps.addCommand(pipSetup);
             }
             if (selectedPackages.some((p) => p && p.packageName.startsWith('Rust'))) {
@@ -36,16 +35,16 @@ selectPackages()
             }
             ps.addCommand('refreshenv\n'); // for powershell to refresh environment variables
 
-            if (selectPackages.some((p) => p && p.packageName.startsWith('Node.js'))) {
-                const npmSetup = fs.readFileSync(path.join(__dirname, '../scripts/npm.setup'), 'utf8').trim();
+            if (selectedPackages.some((p) => p && p.packageName.startsWith('Node.js'))) {
+                const npmSetup = fs.readFileSync(path.join(__dirname, 'scripts/npm.setup'), 'utf8').trim();
                 ps.addCommand(npmSetup);
                 ps.addCommand('npx @leoli0605/git-setup'); // for git
             }
             ps.addCommand('refreshenv\n'); // for powershell to refresh environment variables
 
             if (selectedPackages.some((p) => p && p.packageName.startsWith('Sublime Text'))) {
-                let sublimeSetup = fs.readFileSync(path.join(__dirname, '../scripts/windows/SublimeSetup.ps1'), 'utf8').trim();
-                sublimeSetup = sublimeSetup.replace('${PATH}', path.join(__dirname, '../scripts/windows/Preferences.sublime-settings'));
+                let sublimeSetup = fs.readFileSync(path.join(__dirname, 'scripts/windows/SublimeSetup.ps1'), 'utf8').trim();
+                sublimeSetup = sublimeSetup.replace('${PATH}', path.join(__dirname, 'scripts/windows/Preferences.sublime-settings'));
                 ps.addCommand(sublimeSetup);
             }
             ps.addCommand('refreshenv\n'); // for powershell to refresh environment variables
