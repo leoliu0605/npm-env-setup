@@ -1,19 +1,18 @@
 import fs from 'fs';
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import path from 'path';
+import BaseShell from './base_shell.mjs';
 import { getAppDir } from './dirname.mjs';
-import ShellScript from './shell_script.mjs';
 
 const __dirname = getAppDir();
 
-class PowerShell extends ShellScript {
+class PowerShell extends BaseShell {
     constructor() {
         super();
         this.scripts.push(fs.readFileSync(path.join(__dirname, 'scripts/windows/RunAsAdministrator.ps1'), 'utf8') + '\n');
         this.scripts.push(fs.readFileSync(path.join(__dirname, 'scripts/windows/Chocolatey.ps1'), 'utf8') + '\n');
     }
 
-    getScripts() {
+    script() {
         const paths = this.environment.map((e) => `"${e}"`).join(',\n    ');
         let envSetup = fs.readFileSync(path.join(__dirname, 'scripts/windows/EnvSetup.ps1'), 'utf8');
         envSetup = envSetup.replace('${PATHS}', paths);

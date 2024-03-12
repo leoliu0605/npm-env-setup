@@ -1,4 +1,4 @@
-class ShellScript {
+class BaseShell {
     constructor() {
         this.commands = [];
         this.environment = [];
@@ -10,14 +10,14 @@ class ShellScript {
         console.log(`Command added: ${command}`);
     }
 
-    addEnvironment(value) {
-        this.environment.push(value);
-        console.log(`Environment added: ${value}`);
+    addEnvironment(path) {
+        this.environment.push(path);
+        console.log(`Environment added: ${path}`);
     }
 
-    getScripts() {
-        throw new Error('You have to implement the method getScripts!');
+    script() {
+        throw new Error('You have to implement the method script!');
     }
 }
 
-export default ShellScript;
+export default BaseShell;

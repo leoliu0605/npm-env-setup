@@ -140,14 +140,14 @@
             "install": {
                 "linux": "asdf plugin add nodejs && asdf install nodejs 16.20.2 && asdf global nodejs 16.20.2",
                 "mac": "asdf plugin add nodejs && asdf install nodejs 18.18.0 && asdf global nodejs 18.18.0",
-                "windows": "choco install nvm -y; nvm install 18.18.0; nvm use 18.18.0"
+                "windows": "choco install nvm -y ; nvm install 18.18.0 ; nvm use 18.18.0"
             },
             "type": "force"
         },
         "OpenSSH": {
             "description": "",
             "install": {
-                "linux": "sudo apt install openssh-server -y",
+                "linux": "sudo apt install openssh-server -y && mkdir -p ~/.ssh && chmod 700 ~/.ssh && touch ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys",
                 "mac": "",
                 "windows": ""
             },
@@ -231,6 +231,24 @@
                 "linux": "",
                 "mac": "",
                 "windows": "choco install teraterm -y"
+            },
+            "type": "disable"
+        },
+        "TypeScript": {
+            "description": "",
+            "install": {
+                "linux": "npm install -g typescript ts-node",
+                "mac": "npm install -g typescript ts-node",
+                "windows": "npm install -g typescript ts-node"
+            },
+            "type": "enable"
+        },
+        "VSCode Extension Development": {
+            "description": "VSCode 擴充套件開發工具",
+            "install": {
+                "linux": "npm install -g yo generator-code vsce esbuild",
+                "mac": "npm install -g yo generator-code vsce esbuild",
+                "windows": "npm install -g yo generator-code vsce esbuild"
             },
             "type": "disable"
         },
@@ -510,7 +528,7 @@
             "description": "",
             "install": {
                 "linux": "",
-                "mac": "brew install --cask microsoft-edge",
+                "mac": "brew install --cask microsoft-edge && echo 'export CHROME_EXECUTABLE=\"/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge\"' >>~/.zshrc",
                 "windows": ""
             },
             "type": "enable"

@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import fs from 'fs';
 import inquirer from 'inquirer';
 import os from 'os';
-import path, { dirname } from 'path';
+import path from 'path';
 import { getAppDir } from './dirname.mjs';
 
 export async function selectPackages() {
