@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const child = spawn('node', [path.join(__dirname, '../src/index.js')], {
+const child = spawn('node', [path.join(__dirname, '../src/index.mjs')], {
     env: { ...process.env, NODE_ENV: 'test' },
 });
 
