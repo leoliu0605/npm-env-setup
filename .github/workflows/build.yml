@@ -1,0 +1,67 @@
+name: build
+
+on:
+    push:
+        branches:
+            - 'releases/*'
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: macos-14
+        permissions:
+            contents: write
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 18
+            - run: |
+                  npm install -g pnpm
+                  pnpm install
+
+            - name: Build
+              run: pnpm build
+            - run: ls ./dist
+
+            - uses: actions/upload-artifact@v4
+              with:
+                  name: dist
+                  path: ./dist
+
+    release:
+        needs: build
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+                  token: ${{ secrets.GITHUB_TOKEN }}
+            - uses: actions/download-artifact@v4
+              with:
+                  name: dist
+                  path: ./dist
+            - run: ls ./dist
+
+            - uses: TriPSs/conventional-changelog-action@v5
+              id: changelog
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  release-count: 0
+                  skip-git-pull: 'true'
+
+            - uses: ncipollo/release-action@v1
+              if: steps.changelog.outputs.skipped != 'true'
+              with:
+                  allowUpdates: true
+                  artifacts: 'dist/env-setup-*'
+                  body: ${{ steps.changelog.outputs.clean_changelog }}
+                  draft: false
+                  generateReleaseNotes: true
+                  name: ${{ steps.changelog.outputs.tag }}
+                  prerelease: false
+                  tag: ${{ steps.changelog.outputs.tag }}
+                  token: ${{ secrets.GITHUB_TOKEN }}
