@@ -7,7 +7,7 @@ module.exports = {
     entry: './src/index.mjs',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: 'env-setup.js',
     },
     module: {
         rules: [

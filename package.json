@@ -27,7 +27,7 @@
     "start": "node ./src/index.mjs",
     "test": "node ./test/test.mjs",
     "build": "webpack && npm run build:pkg",
-    "build:pkg": "pkg dist/bundle.js --config pkg.config.json",
+    "build:pkg": "pkg dist/env-setup.js --config pkg.config.json",
     "clean": "rm -rf dist"
   },
   "author": "Leo Li",
