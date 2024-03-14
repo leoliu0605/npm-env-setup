@@ -27,7 +27,7 @@
     "start": "node ./src/index.mjs",
     "test": "node ./test/test.mjs",
     "build": "webpack && npm run build:pkg",
-    "release": "webpack --mode production && npm run build:pkg",
+    "production": "webpack --mode production && npm run build:pkg",
     "build:pkg": "pkg dist/env-setup.js --config pkg.config.json",
     "clean": "rm -rf dist"
   },
@@ -37,7 +37,8 @@
     "@types/inquirer": "^9.0.7",
     "chalk": "^5.3.0",
     "fuzzyset": "^1.0.7",
-    "inquirer": "^9.2.15"
+    "inquirer": "^9.2.15",
+    "markdown-table-prettify": "^3.6.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.9",

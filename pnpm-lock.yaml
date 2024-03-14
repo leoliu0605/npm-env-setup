@@ -17,6 +17,9 @@ dependencies:
   inquirer:
     specifier: ^9.2.15
     version: 9.2.15
+  markdown-table-prettify:
+    specifier: ^3.6.0
+    version: 3.6.0
 
 devDependencies:
   '@babel/cli':
@@ -2955,6 +2958,12 @@ packages:
       pify: 4.0.1
       semver: 5.7.2
     dev: true
+
+  /markdown-table-prettify@3.6.0:
+    resolution: {integrity: sha512-xZg+sL5yWyPz75GwNHtCOLe85CPnssoTLqpGc19xSr6CirGu4xRW2f8wj1f7c8Kx1IItXo3hUIqlUX4qAOwAdg==}
+    engines: {vscode: ^1.59.0}
+    hasBin: true
+    dev: false
 
   /merge-stream@2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
