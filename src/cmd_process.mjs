@@ -5,6 +5,12 @@ if (process.env.NODE_ENV === 'test') {
     stdioConfig = 'inherit';
 }
 
+const colors = {
+    reset: '\x1b[0m',
+    yellow: '\x1b[33m',
+    red: '\x1b[31m',
+};
+
 export function cmd(command, args) {
     return new Promise((resolve, reject) => {
         const child = spawn(command, args, {
@@ -17,7 +23,7 @@ export function cmd(command, args) {
             });
 
             child.stderr.on('data', (data) => {
-                console.error(data.toString());
+                console.error(`${colors.red}${data.toString()}${colors.reset}`);
             });
         }
 

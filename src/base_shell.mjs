@@ -10,9 +10,9 @@ class BaseShell {
         console.log(`Command added: ${command}`);
     }
 
-    addEnvironment(path) {
-        this.environment.push(path);
-        console.log(`Environment added: ${path}`);
+    addEnvironment(value) {
+        this.environment.push(value);
+        console.log(`Environment added: ${value}`);
     }
 
     script() {

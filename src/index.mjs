@@ -3,6 +3,7 @@ import os from 'os';
 import path from 'path';
 import Bash from './bash.mjs';
 import { cmd } from './cmd_process.mjs';
+import { dedupeFile } from './dedupe.mjs';
 import { getAppDir } from './dirname.mjs';
 import { selectPackages } from './package_selector.mjs';
 import PowerShell from './powershell.mjs';
@@ -86,9 +87,12 @@ selectPackages()
             shell = new Bash('bash');
 
             shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/linux/basesetup.sh'), 'utf8').trim());
+            if (fs.existsSync(path.join(os.homedir(), '.asdf'))) {
+                fs.rmSync(path.join(os.homedir(), '.asdf'), { recursive: true });
+            }
             shell.addCommand('git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0');
-            shell.addEnvironment('\'. "~/.asdf/asdf.sh"\'');
-            shell.addEnvironment('\'. "~/.asdf/completions/asdf.bash"\'');
+            shell.addEnvironment('\'. "$HOME/.asdf/asdf.sh"\'');
+            shell.addEnvironment('\'. "$HOME/.asdf/completions/asdf.bash"\'');
             shell.addCommand('export PATH="$HOME/.asdf/bin:$HOME/.asdf/shims:$PATH"');
 
             for (const p of selectedPackages) {
@@ -105,17 +109,24 @@ selectPackages()
                 shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/pip.setup'), 'utf8').trim());
             }
 
-            fs.readFile('/etc/os-release', 'utf8', (err, data) => {
-                if ((!err && /VERSION_ID="20\.\d+"|VERSION_ID="2[1-9]\.\d+"/.test(data)) || /PRETTY_NAME="Ubuntu 20\.\d+.*"|PRETTY_NAME="Ubuntu 2[1-9]\.\d+.*"/.test(data)) {
+            if (fs.existsSync('/etc/os-release')) {
+                const data = fs.readFileSync('/etc/os-release', 'utf8');
+                console.log(data);
+
+                if (/VERSION_ID="20\.\d+"|VERSION_ID="2[1-9]\.\d+"/.test(data) || /PRETTY_NAME="Ubuntu 20\.\d+.*"|PRETTY_NAME="Ubuntu 2[1-9]\.\d+.*"/.test(data)) {
                     console.log('Ubuntu 20.04 detected');
                     shell.addCommand('asdf install nodejs 18.18.0');
                     shell.addCommand('asdf global nodejs 18.18.0');
                 } else {
                     console.log('Ubuntu 20.04 not detected');
                 }
-            });
+            } else {
+                console.log('/etc/os-release file does not exist');
+            }
 
             if (selectedPackages.some((p) => p && p.packageName.startsWith('Node.js'))) {
+                shell.addCommand('node -v');
+                shell.addCommand('npm -v');
                 shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/npm.setup'), 'utf8').trim());
             }
             shell.addCommand('npx @leoli0605/git-setup');
@@ -130,6 +141,12 @@ selectPackages()
         cmd(command, args)
             .then(() => {
                 console.log('Success executing scripts');
+                if (os.platform() === 'linux') {
+                    dedupeFile(path.join(os.homedir(), '.bashrc'));
+                }
+                if (os.platform() === 'darwin') {
+                    dedupeFile(path.join(os.homedir(), '.zshrc'));
+                }
             })
             .catch((error) => {
                 console.error('Error executing scripts:', error);

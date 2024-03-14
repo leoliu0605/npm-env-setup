@@ -7,28 +7,19 @@ class Bash extends BaseShell {
     }
 
     addCommand(command) {
+        super.addCommand(command);
         this.scripts.push(command + '\n');
     }
 
-    addEnvironment(path) {
-        if (this.type === 'bash') {
-            this.scripts.push(`echo ${path} >> ~/.bashrc\n`);
-            this.scripts.push('source ~/.bashrc\n');
-        } else if (this.type === 'zsh') {
-            this.scripts.push(`echo ${path} >> ~/.zshrc\n`);
-            this.scripts.push('source ~/.zshrc\n');
-        }
+    addEnvironment(value) {
+        super.addEnvironment(value);
+        let file = this.type === 'bash' ? '~/.bashrc' : '~/.zshrc';
+        this.scripts.push(`echo ${value} >> ${file}\n`);
+        this.scripts.push(`source ${file}\n`);
     }
 
     script() {
-        return (
-            '#!/bin/bash\n' +
-            this.scripts
-                .toString()
-                .replace(/(^,)/gm, '')
-                .replace(/#!\/bin\/bash/g, '') +
-            '\n'
-        );
+        return '#!/bin/bash\n' + this.scripts.join('').replace(/#!\/bin\/bash/g, '') + '\n';
     }
 }
 
