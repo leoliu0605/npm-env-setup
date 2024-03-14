@@ -9,11 +9,7 @@ const child = spawn('node', [path.join(__dirname, '../src/index.mjs')], {
     env: { ...process.env, NODE_ENV: 'test' },
 });
 
-if (os.platform() === 'linux') {
-    child.stdin.write('a\n');
-} else {
-    child.stdin.write('aa\n'); // Press 'a' twice to deselect all.
-}
+child.stdin.write('aa\n'); // Press 'a' twice to deselect all.
 
 child.stdout.on('data', (data) => {
     console.log(`stdout: ${data}`);

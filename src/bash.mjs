@@ -1,9 +1,20 @@
+import fs from 'fs';
+import FuzzySet from 'fuzzyset';
+import os from 'os';
+import path from 'path';
 import BaseShell from './base_shell.mjs';
+import { getAppDir } from './dirname.mjs';
+
+const __dirname = getAppDir();
 
 class Bash extends BaseShell {
-    constructor(type = 'bash') {
+    constructor() {
         super();
-        this.type = type;
+        if (os.platform() === 'darwin') {
+            this.scripts.push(fs.readFileSync(path.join(__dirname, 'scripts/macos/homebrew.sh'), 'utf8') + '\n');
+        } else {
+            this.scripts.push(fs.readFileSync(path.join(__dirname, 'scripts/linux/basesetup.sh'), 'utf8') + '\n');
+        }
     }
 
     addCommand(command) {
@@ -13,9 +24,17 @@ class Bash extends BaseShell {
 
     addEnvironment(value) {
         super.addEnvironment(value);
-        let file = this.type === 'bash' ? '~/.bashrc' : '~/.zshrc';
-        this.scripts.push(`echo ${value} >> ${file}\n`);
-        this.scripts.push(`source ${file}\n`);
+        const file = os.platform() === 'darwin' ? '.zshrc' : '.bashrc';
+        const data = fs.readFileSync(path.join(os.homedir(), file), 'utf8');
+        const lines = data.split('\n');
+        const fuzzy = FuzzySet(lines);
+        const results = fuzzy.get(value);
+        const similarityThreshold = 0.8;
+        const isSimilar = results && results.some(([score]) => score > similarityThreshold);
+        if (!isSimilar) {
+            this.scripts.push(`echo ${value} >> ~/${file}\n`);
+            this.scripts.push(`source ~/${file}\n`);
+        }
     }
 
     script() {

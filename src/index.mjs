@@ -3,154 +3,138 @@ import os from 'os';
 import path from 'path';
 import Bash from './bash.mjs';
 import { cmd } from './cmd_process.mjs';
-import { dedupeFile } from './dedupe.mjs';
 import { getAppDir } from './dirname.mjs';
 import { selectPackages } from './package_selector.mjs';
 import PowerShell from './powershell.mjs';
 
 const __dirname = getAppDir();
 
-selectPackages()
-    .then((selectedPackages) => {
-        let shell;
-        let command = '';
-        let args = [];
-        if (os.platform() === 'win32') {
+class SetupManager {
+    constructor() {
+        this.shell = null;
+        this.command = '';
+        this.args = [];
+        this.initializeShell();
+    }
+
+    initializeShell() {
+        const platform = os.platform();
+        if (platform === 'win32') {
             console.log('Windows detected');
-            shell = new PowerShell();
-
-            for (const p of selectedPackages) {
-                if (p) {
-                    shell.addCommand(p.installCommand);
-                }
-            }
-            shell.addCommand('refreshenv\n');
-
-            if (selectedPackages.some((p) => p && p.packageName.startsWith('Python'))) {
-                shell.addEnvironment('$HOME\\AppData\\Roaming\\Python\\Scripts');
-                shell.addCommand('(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -');
-                shell.addCommand('poetry config virtualenvs.in-project true');
-                shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/pip.setup'), 'utf8').trim());
-            }
-            if (selectedPackages.some((p) => p && p.packageName.startsWith('Rust'))) {
-                shell.addEnvironment('$HOME\\.cargo\\bin');
-            }
-            shell.addCommand('refreshenv\n');
-
-            if (selectedPackages.some((p) => p && p.packageName.startsWith('Node.js'))) {
-                shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/npm.setup'), 'utf8').trim());
-            }
-            shell.addCommand('refreshenv\n');
-
-            if (selectedPackages.some((p) => p && p.packageName.startsWith('Sublime Text'))) {
-                shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/windows/SublimeSetup.ps1'), 'utf8').trim().replace('${PATH}', path.join(__dirname, 'scripts/windows/Preferences.sublime-settings')));
-            }
-            shell.addCommand('refreshenv\n');
-            shell.addCommand('npx @leoli0605/git-setup');
-            const script = shell.script();
-
-            const encodedScript = Buffer.from(script, 'utf16le').toString('base64');
-            command = 'powershell.exe';
-            args = ['-NoProfile', '-EncodedCommand', encodedScript];
-        } else if (os.platform() === 'darwin') {
+            this.shell = new PowerShell();
+            this.command = 'powershell.exe';
+        } else if (platform === 'darwin') {
             console.log('MacOS detected');
-            shell = new Bash('zsh');
+            this.shell = new Bash();
+            this.command = '/bin/zsh';
+        } else if (platform === 'linux') {
+            console.log('Linux detected');
+            this.shell = new Bash();
+            this.command = '/bin/bash';
+        }
+    }
 
-            shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/macos/homebrew.sh'), 'utf8').trim());
-            shell.addCommand('brew install asdf');
-            shell.addEnvironment('". /opt/homebrew/opt/asdf/libexec/asdf.sh"');
+    setupEnvironment(selectedPackages) {
+        if (os.platform() !== 'win32') {
+            this.setupNonWindowsEnvironment();
+        }
 
-            for (const p of selectedPackages) {
-                if (p) {
-                    shell.addCommand(p.installCommand);
-                }
+        selectedPackages.forEach((p) => p && this.shell.addCommand(p.installCommand));
+
+        if (os.platform() === 'win32') {
+            this.shell.addCommand('refreshenv\n');
+        }
+
+        if (selectedPackages.some((p) => p && p.packageName.startsWith('Python'))) {
+            if (os.platform() === 'win32') {
+                this.shell.addEnvironment('$HOME\\AppData\\Roaming\\Python\\Scripts');
+            } else {
+                this.shell.addEnvironment('\'export PATH="$HOME/.local/bin:$PATH"\'');
             }
+            const poetryInstallCommand = os.platform() === 'win32' ? '(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -' : 'curl -sSL https://install.python-poetry.org | python3';
+            this.shell.addCommand(poetryInstallCommand);
+            this.shell.addCommand('python --version');
+            this.shell.addCommand('pip --version');
+            this.shell.addCommand('poetry --version');
+            this.shell.addCommand('poetry config virtualenvs.in-project true');
+            this.shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/pip.setup'), 'utf8').trim());
+        }
 
-            if (selectedPackages.some((p) => p && p.packageName.startsWith('Python'))) {
-                shell.addCommand('curl -sSL https://install.python-poetry.org | python3');
-                shell.addEnvironment('\'export PATH="$HOME/.local/bin:$PATH"\'');
-                shell.addCommand('poetry --version');
-                shell.addCommand('poetry config virtualenvs.in-project true');
-                shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/pip.setup'), 'utf8').trim());
-            }
-            if (selectedPackages.some((p) => p && p.packageName.startsWith('Node.js'))) {
-                shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/npm.setup'), 'utf8').trim());
-            }
-            shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/macos/zshsetup.sh'), 'utf8').trim());
-            shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/macos/macsetup.sh'), 'utf8').trim());
-            shell.addCommand('npx @leoli0605/git-setup');
-            const script = shell.script();
+        if (os.platform() === 'win32' && selectedPackages.some((p) => p && p.packageName.startsWith('Rust'))) {
+            this.shell.addEnvironment('$HOME\\.cargo\\bin');
+            this.shell.addCommand('refreshenv\n');
+            this.shell.addCommand('rust --version');
+        }
 
-            command = '/bin/zsh';
-            args = ['-c', script];
-        } else if (os.platform() === 'linux') {
-            shell = new Bash('bash');
-
-            shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/linux/basesetup.sh'), 'utf8').trim());
-            if (fs.existsSync(path.join(os.homedir(), '.asdf'))) {
-                fs.rmSync(path.join(os.homedir(), '.asdf'), { recursive: true });
-            }
-            shell.addCommand('git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0');
-            shell.addEnvironment('\'. "$HOME/.asdf/asdf.sh"\'');
-            shell.addEnvironment('\'. "$HOME/.asdf/completions/asdf.bash"\'');
-            shell.addCommand('export PATH="$HOME/.asdf/bin:$HOME/.asdf/shims:$PATH"');
-
-            for (const p of selectedPackages) {
-                if (p) {
-                    shell.addCommand(p.installCommand);
-                }
-            }
-
-            if (selectedPackages.some((p) => p && p.packageName.startsWith('Python'))) {
-                shell.addCommand('curl -sSL https://install.python-poetry.org | python3');
-                shell.addEnvironment('\'export PATH="$HOME/.local/bin:$PATH"\'');
-                shell.addCommand('poetry --version');
-                shell.addCommand('poetry config virtualenvs.in-project true');
-                shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/pip.setup'), 'utf8').trim());
-            }
-
-            if (fs.existsSync('/etc/os-release')) {
+        if (selectedPackages.some((p) => p && p.packageName.startsWith('Node.js'))) {
+            if (os.platform() === 'linux' && fs.existsSync('/etc/os-release')) {
                 const data = fs.readFileSync('/etc/os-release', 'utf8');
-                console.log(data);
-
                 if (/VERSION_ID="20\.\d+"|VERSION_ID="2[1-9]\.\d+"/.test(data) || /PRETTY_NAME="Ubuntu 20\.\d+.*"|PRETTY_NAME="Ubuntu 2[1-9]\.\d+.*"/.test(data)) {
                     console.log('Ubuntu 20.04 detected');
-                    shell.addCommand('asdf install nodejs 18.18.0');
-                    shell.addCommand('asdf global nodejs 18.18.0');
+                    this.shell.addCommand('asdf install nodejs 18.18.0');
+                    this.shell.addCommand('asdf global nodejs 18.18.0');
                 } else {
                     console.log('Ubuntu 20.04 not detected');
                 }
-            } else {
-                console.log('/etc/os-release file does not exist');
             }
-
-            if (selectedPackages.some((p) => p && p.packageName.startsWith('Node.js'))) {
-                shell.addCommand('node -v');
-                shell.addCommand('npm -v');
-                shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/npm.setup'), 'utf8').trim());
+            this.shell.addCommand('node --version');
+            this.shell.addCommand('npm --version');
+            this.shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/npm.setup'), 'utf8').trim());
+            if (os.platform() === 'win32') {
+                this.shell.addCommand('refreshenv\n');
             }
-            shell.addCommand('npx @leoli0605/git-setup');
-            const script = shell.script();
-
-            command = '/bin/bash';
-            args = ['-c', script];
         }
 
-        console.log(`command: ${command}`);
-        console.log(`args: ${args}`);
-        cmd(command, args)
+        if (os.platform() === 'win32' && selectedPackages.some((p) => p && p.packageName.startsWith('Sublime Text'))) {
+            this.shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/windows/SublimeSetup.ps1'), 'utf8').trim().replace('${PATH}', path.join(__dirname, 'scripts/windows/Preferences.sublime-settings')));
+            this.shell.addCommand('refreshenv\n');
+        }
+
+        if (os.platform() === 'darwin') {
+            this.shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/macos/zshsetup.sh'), 'utf8').trim());
+            this.shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/macos/macsetup.sh'), 'utf8').trim());
+        }
+
+        this.shell.addCommand('npx @leoli0605/git-setup');
+    }
+
+    setupNonWindowsEnvironment() {
+        if (os.platform() === 'darwin') {
+            this.shell.addCommand('brew install asdf');
+            this.shell.addEnvironment('". /opt/homebrew/opt/asdf/libexec/asdf.sh"');
+        } else if (os.platform() === 'linux') {
+            if (fs.existsSync(path.join(os.homedir(), '.asdf'))) {
+                fs.rmSync(path.join(os.homedir(), '.asdf'), { recursive: true });
+            }
+            this.shell.addCommand('git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0');
+            this.shell.addEnvironment('\'. "$HOME/.asdf/asdf.sh"\'');
+            this.shell.addEnvironment('\'. "$HOME/.asdf/completions/asdf.bash"\'');
+            this.shell.addCommand('export PATH="$HOME/.asdf/bin:$HOME/.asdf/shims:$PATH"');
+        }
+    }
+
+    finalizeScript() {
+        const script = this.shell.script();
+        this.args = os.platform() === 'win32' ? ['-NoProfile', '-EncodedCommand', Buffer.from(script, 'utf16le').toString('base64')] : ['-c', script];
+    }
+
+    execute() {
+        console.log(`command: ${this.command}`);
+        console.log(`args: ${this.args}`);
+        cmd(this.command, this.args)
             .then(() => {
                 console.log('Success executing scripts');
-                if (os.platform() === 'linux') {
-                    dedupeFile(path.join(os.homedir(), '.bashrc'));
-                }
-                if (os.platform() === 'darwin') {
-                    dedupeFile(path.join(os.homedir(), '.zshrc'));
-                }
             })
-            .catch((error) => {
-                console.error('Error executing scripts:', error);
-            });
+            .catch((error) => console.error('Error executing scripts:', error));
+    }
+}
+
+selectPackages()
+    .then((selectedPackages) => {
+        const setupManager = new SetupManager();
+        setupManager.setupEnvironment(selectedPackages);
+        setupManager.finalizeScript();
+        setupManager.execute();
     })
     .catch((error) => {
         console.error('Error selecting packages:', error);
