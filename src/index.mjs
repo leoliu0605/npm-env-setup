@@ -7,6 +7,9 @@ import { getAppDir } from './dirname.mjs';
 import { selectPackages } from './package_selector.mjs';
 import PowerShell from './powershell.mjs';
 
+const version = process.env.APP_VERSION;
+console.log(`env-setup version: ${version}\n`);
+
 const __dirname = getAppDir();
 
 class SetupManager {

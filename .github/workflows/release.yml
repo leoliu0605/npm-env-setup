@@ -21,9 +21,10 @@ jobs:
                   npm install -g pnpm
                   pnpm install
 
-            - run: npm run production
+            - run: |
+                  export APP_VERSION=$(node -p "require('./package.json').version")
+                  npm run production
             - run: ls ./dist
-
             - uses: actions/upload-artifact@v4
               with:
                   name: dist
