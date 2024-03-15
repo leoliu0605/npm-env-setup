@@ -35,6 +35,10 @@ jobs:
               env:
                   CI: true
 
+            - uses: technote-space/toc-generator@v4
+              with:
+                  FOLDING: 'true'
+
             - uses: TriPSs/conventional-changelog-action@v5
               id: changelog
               with:

@@ -4,6 +4,9 @@
 [![test](https://github.com/DinosauriaLab/npm-env-setup/actions/workflows/test.yml/badge.svg)](https://github.com/DinosauriaLab/npm-env-setup/actions/workflows/test.yml)
 [![GitHub Release](https://img.shields.io/github/v/release/DinosauriaLab/npm-env-setup)](https://github.com/DinosauriaLab/npm-env-setup/releases/latest)
 
+<!-- START doctoc -->
+<!-- END doctoc -->
+
 This project offers a streamlined solution for setting up a brand new computer using just a command line interface (CLI). With an interactive CLI approach, it automates the installation and configuration of your computer, allowing you to customize the software and settings you need swiftly and efficiently. This tool is designed to get you up and running on your new machine without the hassle, covering everything from essential software installations to environment setups.
 
 ## Usage
