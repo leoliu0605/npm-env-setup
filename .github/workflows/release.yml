@@ -3,23 +3,44 @@ name: release
 on:
     push:
         branches:
-            - main
             - 'releases/*'
     workflow_dispatch:
 
 jobs:
-    build:
+    release:
         runs-on: macos-14
         permissions:
             contents: write
+
         steps:
             - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+                  token: ${{ secrets.GITHUB_TOKEN }}
+
             - uses: actions/setup-node@v4
               with:
                   node-version: 18
             - run: |
                   npm install -g pnpm
                   pnpm install
+
+            - run: |
+                  git config user.name "GitHub Actions"
+                  git config user.email "action@github.com"
+                  node docs/software_lists.mjs
+                  git add README.md
+                  git diff --cached --quiet || git commit -m "docs: update software lists"
+                  git push origin ${{ github.ref }}
+              env:
+                  CI: true
+
+            - uses: TriPSs/conventional-changelog-action@v5
+              id: changelog
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  release-count: 0
+                  skip-git-pull: 'true'
 
             - run: |
                   export APP_VERSION=$(node -p "require('./package.json').version")
@@ -30,32 +51,8 @@ jobs:
                   name: dist
                   path: ./dist
 
-    release:
-        needs: build
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/head/releases/')
-        runs-on: ubuntu-latest
-        permissions:
-            contents: write
-
-        steps:
-            - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
-                  token: ${{ secrets.GITHUB_TOKEN }}
-            - uses: actions/download-artifact@v4
-              with:
-                  name: dist
-                  path: ./dist
-            - run: ls ./dist
-
-            - uses: TriPSs/conventional-changelog-action@v5
-              id: changelog
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  release-count: 0
-                  skip-git-pull: 'true'
-
             - uses: ncipollo/release-action@v1
+              id: release
               if: steps.changelog.outputs.skipped != 'true'
               with:
                   allowUpdates: true
@@ -67,3 +64,11 @@ jobs:
                   prerelease: false
                   tag: ${{ steps.changelog.outputs.tag }}
                   token: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Merge release branch
+              if: steps.release.outputs.id != ''
+              run: |
+                  git checkout main
+                  git pull
+                  git merge --no-ff ${{ steps.changelog.outputs.tag }}
+                  git push

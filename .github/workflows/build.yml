@@ -1,0 +1,31 @@
+name: build
+
+on:
+    push:
+        branches:
+            - main
+            - 'releases/*'
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: macos-14
+        permissions:
+            contents: write
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 18
+            - run: |
+                  npm install -g pnpm
+                  pnpm install
+
+            - run: |
+                  export APP_VERSION=$(node -p "require('./package.json').version")
+                  npm run build
+            - run: ls ./dist
+            - uses: actions/upload-artifact@v4
+              with:
+                  name: dist
+                  path: ./dist
