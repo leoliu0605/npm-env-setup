@@ -13,9 +13,9 @@ function generateMarkdown({ beforeMarker, afterMarker, content }) {
 // 根據資產名稱和下載 URL 生成對應的 shell 命令
 function generateShellCommand(asset) {
     if (asset.name.includes('win-x64')) {
-        return `powershell.exe -Command "Invoke-WebRequest -Uri "${asset.browser_download_url}" -OutFile "${asset.name}"; Start-Process "${asset.name}" -Wait; Remove-Item "${asset.name}" -Force"`;
+        return `powershell.exe -Command "Invoke-WebRequest -Uri ${asset.browser_download_url} -OutFile ${asset.name}; Start-Process ${asset.name} -Wait; Remove-Item ${asset.name} -Force"`;
     } else {
-        return `curl -L "${asset.browser_download_url}" -o ${asset.name} && chmod +x ${asset.name} && ./${asset.name} && rm -f ${asset.name}`;
+        return `curl -L ${asset.browser_download_url} -o ${asset.name} && chmod +x ${asset.name} && ./${asset.name} && rm -f ${asset.name}`;
     }
 }
 
@@ -32,38 +32,60 @@ function selectMarkers(asset) {
     }
 }
 
-const url = `https://api.github.com/repos/DinosauriaLab/npm-env-setup/releases/latest`;
-const options = {
-    headers: {
-        'User-Agent': 'node.js',
-    },
-};
+const MAX_RETRIES = 10; // 最大重試次數
+const RETRY_DELAY = 5000; // 重試間隔時間，單位毫秒
 
-https
-    .get(url, options, (res) => {
-        let data = '';
-        res.on('data', (chunk) => {
-            data += chunk;
-        });
-        res.on('end', () => {
-            const release = JSON.parse(data);
-            console.log(release);
-            console.log(`Latest release: ${release.name}`);
-            release.assets.forEach((asset) => {
-                console.log(`Download URL: ${asset.browser_download_url}`);
-                console.log(`Asset name: ${asset.name}`);
-                const shellCommand = generateShellCommand(asset);
-                const { beforeMarker, afterMarker } = selectMarkers(asset);
-                if (beforeMarker && afterMarker) {
-                    generateMarkdown({
-                        beforeMarker,
-                        afterMarker,
-                        content: '```shell\n' + shellCommand + '\n```',
+function fetchReleaseData(retryCount = 0) {
+    const url = `https://api.github.com/repos/DinosauriaLab/npm-env-setup/releases/latest`;
+    const options = {
+        headers: {
+            'User-Agent': 'node.js',
+        },
+    };
+
+    https
+        .get(url, options, (res) => {
+            let data = '';
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+            res.on('end', () => {
+                try {
+                    const release = JSON.parse(data);
+                    console.log(`Latest release: ${release.name}`);
+                    release.assets.forEach((asset) => {
+                        console.log(`Download URL: ${asset.browser_download_url}`);
+                        console.log(`Asset name: ${asset.name}`);
+                        const shellCommand = generateShellCommand(asset);
+                        const { beforeMarker, afterMarker } = selectMarkers(asset);
+                        if (beforeMarker && afterMarker) {
+                            generateMarkdown({
+                                beforeMarker,
+                                afterMarker,
+                                content: '```shell\n' + shellCommand + '\n```',
+                            });
+                        }
                     });
+                } catch (error) {
+                    console.error('Error parsing response: ', error.message);
+                    retryOrFail(retryCount);
                 }
             });
+        })
+        .on('error', (err) => {
+            console.error('HTTPS request failed: ', err.message);
+            retryOrFail(retryCount);
         });
-    })
-    .on('error', (err) => {
-        console.error('Error: ', err.message);
-    });
+}
+
+function retryOrFail(retryCount) {
+    if (retryCount < MAX_RETRIES) {
+        console.log(`Retry ${retryCount + 1}/${MAX_RETRIES} after ${RETRY_DELAY}ms...`);
+        setTimeout(() => fetchReleaseData(retryCount + 1), RETRY_DELAY);
+    } else {
+        console.log('Max retries reached. Giving up.');
+    }
+}
+
+// 初始調用
+fetchReleaseData();

@@ -1,4 +1,13 @@
-# 1.0.0 (2024-03-15)
+## [1.0.2](https://github.com/leoli0605/npm-env-setup/compare/v1.0.0...v1.0.2) (2024-03-16)
+
+
+### Bug Fixes
+
+* update stdin from pipe to inherit to fix [#8](https://github.com/leoli0605/npm-env-setup/issues/8) issue ([4641366](https://github.com/leoli0605/npm-env-setup/commit/464136696b0ea1c894d538ae9cc3ae7014c621af))
+
+
+
+# [1.0.0](https://github.com/leoli0605/npm-env-setup/compare/45a0bf78f82824d25f1b0373b21b509d147ffe83...v1.0.0) (2024-03-15)
 
 
 ### Bug Fixes

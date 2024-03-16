@@ -31,8 +31,7 @@ jobs:
             - run: |
                   node docs/software_lists.mjs
                   git add README.md
-                  git diff --cached --quiet || git commit -m "docs: update software lists"
-                  git push origin ${{ github.ref }}
+                  git diff --cached --quiet || (git commit -m "docs: update software lists" && git push origin ${{ github.ref }})
               env:
                   CI: true
 
@@ -75,8 +74,7 @@ jobs:
               run: |
                   node docs/download_links.mjs
                   git add README.md
-                  git diff --cached --quiet || git commit -m "docs: update download links"
-                  git push origin ${{ github.ref }}
+                  git diff --cached --quiet || (git commit -m "docs: update download links" && git push origin ${{ github.ref }})
 
             - name: Merge release branch
               if: steps.release.outputs.id != ''
