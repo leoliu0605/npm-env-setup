@@ -67,7 +67,7 @@ jobs:
                   name: ${{ steps.changelog.outputs.tag }}
                   prerelease: false
                   tag: ${{ steps.changelog.outputs.tag }}
-                  token: ${{ secrets.GITHUB_TOKEN }}
+                  token: ${{ secrets.PAT }}
 
             - name: Update download links
               if: steps.release.outputs.id != ''
