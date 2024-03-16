@@ -1,4 +1,4 @@
-## [1.0.2](https://github.com/leoli0605/npm-env-setup/compare/v1.0.0...v1.0.2) (2024-03-16)
+## [1.0.1](https://github.com/leoli0605/npm-env-setup/compare/v1.0.0...v1.0.1) (2024-03-16)
 
 
 ### Bug Fixes
