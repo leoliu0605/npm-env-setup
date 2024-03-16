@@ -1,6 +1,6 @@
 import { spawn } from 'child_process';
 
-let stdioConfig = ['pipe', 'pipe', 'pipe'];
+let stdioConfig = ['inherit', 'pipe', 'pipe'];
 if (process.env.NODE_ENV === 'test') {
     stdioConfig = 'inherit';
 }
