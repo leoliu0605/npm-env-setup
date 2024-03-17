@@ -9,15 +9,14 @@
 <details>
 <summary>Table of Contents</summary>
 
-- [One Line Command to Setup Your New Computer](#one-line-command-to-setup-your-new-computer)
-  - [Usage](#usage)
-    - [Windows](#windows)
-    - [MacOS](#macos)
-    - [Linux (Ubuntu 18.04 LTS and later)](#linux-ubuntu-1804-lts-and-later)
-  - [Features](#features)
-    - [Windows Software List](#windows-software-list)
-    - [MacOS Software List](#macos-software-list)
-    - [Linux Software List](#linux-software-list)
+- [Usage](#usage)
+  - [Windows](#windows)
+  - [MacOS](#macos)
+  - [Linux (Ubuntu 18.04 LTS and later)](#linux-ubuntu-1804-lts-and-later)
+- [Features](#features)
+  - [Windows Software List](#windows-software-list)
+  - [MacOS Software List](#macos-software-list)
+  - [Linux Software List](#linux-software-list)
 
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
