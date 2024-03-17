@@ -9,19 +9,22 @@
 <details>
 <summary>Table of Contents</summary>
 
-- [Usage](#usage)
-  - [Windows](#windows)
-  - [MacOS](#macos)
-  - [Linux (Ubuntu 18.04 LTS and later)](#linux-ubuntu-1804-lts-and-later)
-- [Features](#features)
-  - [Windows Software List](#windows-software-list)
-  - [MacOS Software List](#macos-software-list)
-  - [Linux Software List](#linux-software-list)
+- [One Line Command to Setup Your New Computer](#one-line-command-to-setup-your-new-computer)
+  - [Usage](#usage)
+    - [Windows](#windows)
+    - [MacOS](#macos)
+    - [Linux (Ubuntu 18.04 LTS and later)](#linux-ubuntu-1804-lts-and-later)
+  - [Features](#features)
+    - [Windows Software List](#windows-software-list)
+    - [MacOS Software List](#macos-software-list)
+    - [Linux Software List](#linux-software-list)
 
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 This project offers a streamlined solution for setting up a brand new computer using just a command line interface (CLI). With an interactive CLI approach, it automates the installation and configuration of your computer, allowing you to customize the software and settings you need swiftly and efficiently. This tool is designed to get you up and running on your new machine without the hassle, covering everything from essential software installations to environment setups.
+
+![](docs/cover.jpeg)
 
 ## Usage
 
