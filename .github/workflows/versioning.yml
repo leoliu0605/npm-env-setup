@@ -11,3 +11,17 @@ jobs:
             - uses: Actions-R-Us/actions-tagger@latest
               with:
                   publish_latest_tag: true
+
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 18
+            - run: |
+                  npm install -g pnpm
+                  pnpm install
+            - name: Update download links
+              run: |
+                  node docs/download_links.mjs
+                  git add README.md
+                  git diff --cached --quiet || (git commit -m "docs: update download links" && git push origin ${{ github.ref }})
+                  git push origin ${{ github.ref }}

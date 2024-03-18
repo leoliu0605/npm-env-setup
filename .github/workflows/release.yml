@@ -69,13 +69,6 @@ jobs:
                   tag: ${{ steps.changelog.outputs.tag }}
                   token: ${{ secrets.PAT }}
 
-            - name: Update download links
-              if: steps.release.outputs.id != ''
-              run: |
-                  node docs/download_links.mjs
-                  git add README.md
-                  git diff --cached --quiet || (git commit -m "docs: update download links" && git push origin ${{ github.ref }})
-
             - name: Merge release branch
               if: steps.release.outputs.id != ''
               run: |
