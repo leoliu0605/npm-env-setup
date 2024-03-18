@@ -1,16 +1,13 @@
+import fetch from 'node-fetch';
 import fs from 'fs';
-import https from 'node:https';
 
-// 生成 Markdown 內容並更新 README.md 檔案
 function generateMarkdown({ beforeMarker, afterMarker, content }) {
     let readme = fs.readFileSync('README.md', 'utf8');
     let before = readme.substring(0, readme.indexOf(beforeMarker) + beforeMarker.length);
     let after = readme.substring(readme.indexOf(afterMarker));
-
     fs.writeFileSync('README.md', `${before}\n${content}\n${after}`);
 }
 
-// 根據資產名稱和下載 URL 生成對應的 shell 命令
 function generateShellCommand(asset) {
     if (asset.name.includes('win-x64')) {
         return `powershell.exe -Command "Invoke-WebRequest -Uri ${asset.browser_download_url} -OutFile ${asset.name}; Start-Process ${asset.name} -Wait; Remove-Item ${asset.name} -Force"`;
@@ -19,7 +16,6 @@ function generateShellCommand(asset) {
     }
 }
 
-// 根據資產名稱選擇對應的標記
 function selectMarkers(asset) {
     if (asset.name.includes('env-setup-win-x64')) {
         return { beforeMarker: '<!-- WINDOWS_LINK_X64_START -->', afterMarker: '<!-- WINDOWS_LINK_X64_END -->' };
@@ -32,60 +28,42 @@ function selectMarkers(asset) {
     }
 }
 
-const MAX_RETRIES = 10; // 最大重試次數
-const RETRY_DELAY = 5000; // 重試間隔時間，單位毫秒
+const MAX_RETRIES = 10;
+const RETRY_DELAY = 5000;
 
-function fetchReleaseData(retryCount = 0) {
-    const url = `https://api.github.com/repos/DinosauriaLab/npm-env-setup/releases/latest`;
-    const options = {
-        headers: {
-            'User-Agent': 'node.js',
-        },
-    };
-
-    https
-        .get(url, options, (res) => {
-            let data = '';
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
-            res.on('end', () => {
-                try {
-                    const release = JSON.parse(data);
-                    console.log(`Latest release: ${release.name}`);
-                    release.assets.forEach((asset) => {
-                        console.log(`Download URL: ${asset.browser_download_url}`);
-                        console.log(`Asset name: ${asset.name}`);
-                        const shellCommand = generateShellCommand(asset);
-                        const { beforeMarker, afterMarker } = selectMarkers(asset);
-                        if (beforeMarker && afterMarker) {
-                            generateMarkdown({
-                                beforeMarker,
-                                afterMarker,
-                                content: '```shell\n' + shellCommand + '\n```',
-                            });
-                        }
-                    });
-                } catch (error) {
-                    console.error('Error parsing response: ', error.message);
-                    retryOrFail(retryCount);
-                }
-            });
-        })
-        .on('error', (err) => {
-            console.error('HTTPS request failed: ', err.message);
-            retryOrFail(retryCount);
+async function fetchReleaseData(retryCount = 0) {
+    const url = `https://api.github.com/repos/leoli0605/npm-env-setup/releases/latest`;
+    try {
+        const response = await fetch(url, {
+            headers: {
+                'User-Agent': 'node.js',
+            },
         });
-}
-
-function retryOrFail(retryCount) {
-    if (retryCount < MAX_RETRIES) {
-        console.log(`Retry ${retryCount + 1}/${MAX_RETRIES} after ${RETRY_DELAY}ms...`);
-        setTimeout(() => fetchReleaseData(retryCount + 1), RETRY_DELAY);
-    } else {
-        console.log('Max retries reached. Giving up.');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const release = await response.json();
+        console.log(`Latest release: ${release.name}`);
+        release.assets.forEach((asset) => {
+            console.log(`Download URL: ${asset.browser_download_url}`);
+            console.log(`Asset name: ${asset.name}`);
+            const shellCommand = generateShellCommand(asset);
+            const { beforeMarker, afterMarker } = selectMarkers(asset);
+            if (beforeMarker && afterMarker) {
+                generateMarkdown({
+                    beforeMarker,
+                    afterMarker,
+                    content: '```shell\n' + shellCommand + '\n```',
+                });
+            }
+        });
+    } catch (error) {
+        console.error('Error fetching release data: ', error.message);
+        if (retryCount < MAX_RETRIES) {
+            console.log(`Retry ${retryCount + 1}/${MAX_RETRIES} after ${RETRY_DELAY}ms...`);
+            setTimeout(() => fetchReleaseData(retryCount + 1), RETRY_DELAY);
+        } else {
+            console.log('Max retries reached. Giving up.');
+        }
     }
 }
 
-// 初始調用
 fetchReleaseData();
