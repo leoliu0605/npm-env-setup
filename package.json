@@ -38,7 +38,8 @@
     "chalk": "^5.3.0",
     "fuzzyset": "^1.0.7",
     "inquirer": "^9.2.15",
-    "markdown-table-prettify": "^3.6.0"
+    "markdown-table-prettify": "^3.6.0",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.9",
