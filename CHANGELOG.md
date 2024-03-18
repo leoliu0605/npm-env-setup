@@ -1,3 +1,12 @@
+## [1.0.2](https://github.com/leoli0605/npm-env-setup/compare/v1.0.1...v1.0.2) (2024-03-18)
+
+
+### Bug Fixes
+
+* install Node.js 18.18.0 directly on Windows without using NVM to avoid errors, close [#9](https://github.com/leoli0605/npm-env-setup/issues/9) ([16bb945](https://github.com/leoli0605/npm-env-setup/commit/16bb945c634c5f97fd8268d0679f4f6cc050171e))
+
+
+
 ## [1.0.1](https://github.com/leoli0605/npm-env-setup/compare/v1.0.0...v1.0.1) (2024-03-16)
 
 
