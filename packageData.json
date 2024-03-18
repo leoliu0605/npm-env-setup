@@ -140,7 +140,7 @@
             "install": {
                 "linux": "asdf plugin add nodejs && asdf install nodejs 16.20.2 && asdf global nodejs 16.20.2",
                 "mac": "asdf plugin add nodejs && asdf install nodejs 18.18.0 && asdf global nodejs 18.18.0",
-                "windows": "choco install nvm -y ; nvm install 18.18.0 ; nvm use 18.18.0"
+                "windows": "choco install nodejs --version=18.18.0 -y"
             },
             "type": "force"
         },

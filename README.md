@@ -23,6 +23,8 @@
 
 This project offers a streamlined solution for setting up a brand new computer using just a command line interface (CLI). With an interactive CLI approach, it automates the installation and configuration of your computer, allowing you to customize the software and settings you need swiftly and efficiently. This tool is designed to get you up and running on your new machine without the hassle, covering everything from essential software installations to environment setups.
 
+![](docs/cover.jpeg)
+
 ## Usage
 
 Here’s how you can use this tool to set up your computer quickly and easily. Simply follow the instructions for your computer's operating system. No need to worry about the technical terms like "x86" or "arm64"; we've got you covered with straightforward instructions for every type of computer.
