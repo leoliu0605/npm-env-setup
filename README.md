@@ -81,7 +81,7 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 
 | Package                      | Description                                                                                        | Default    |
 |------------------------------|----------------------------------------------------------------------------------------------------|------------|
-| Android Studio               | -                                                                                                  | **enable** |
+| Android Studio               | -                                                                                                  | disable    |
 | Beyond Compare               | 用來做檔案差異比較的 GUI 軟體                                                                      | **enable** |
 | Cuda                         | 控制 NVIDIA GPU 的 CLI 工具                                                                        | disable    |
 | DevToys                      | 開發者工具集合，包含了許多常用的開發者工具                                                          | disable    |
@@ -91,14 +91,14 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | Git                          | -                                                                                                  | `force`    |
 | Golang                       | -                                                                                                  | disable    |
 | ImageJ                       | 基於 Java 的圖像處理軟體                                                                           | **enable** |
-| KiCad                        | 繪製電路原理圖和印刷電路板設計的自由軟體                                                           | **enable** |
+| KiCad                        | 繪製電路原理圖和印刷電路板設計的自由軟體                                                           | disable    |
 | LINQPad 7                    | 一款強大的 .NET 程式碼編輯器                                                                       | **enable** |
 | LazyDocker                   | 一個簡單的終端機使用者介面，適用於 docker 與 docker-compose                                         | **enable** |
 | Miniconda 3                  | -                                                                                                  | disable    |
 | MobaXTerm                    | 終端機工具，類似於 PuTTY                                                                            | **enable** |
 | Node.js                      | -                                                                                                  | `force`    |
 | Pandoc                       | 文件轉換工具                                                                                       | **enable** |
-| PuTTY                        | -                                                                                                  | disable    |
+| PuTTY                        | -                                                                                                  | **enable** |
 | PySide6                      | -                                                                                                  | disable    |
 | Python                       | -                                                                                                  | `force`    |
 | Rust                         | -                                                                                                  | `force`    |
@@ -109,43 +109,44 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | TypeScript                   | -                                                                                                  | **enable** |
 | VSCode Extension Development | VSCode 擴充套件開發工具                                                                            | disable    |
 | Virtual Box                  | 自由及開放原始碼的虛擬機器軟體                                                                     | **enable** |
-| Visual Studio 2022 Community | -                                                                                                  | **enable** |
+| Visual Studio 2022 Community | -                                                                                                  | disable    |
 | Visual Studio Code           | -                                                                                                  | **enable** |
 | act-cli                      | GitHub Actions 的 CLI 工具                                                                         | disable    |
 | commitizen                   | Git Commit 規範工具                                                                                | **enable** |
 | dotnet-sdk                   | -                                                                                                  | **enable** |
 | gcc                          | C / C++ 編譯器                                                                                     | **enable** |
-| gcc-arm-none-eabi            | ARM 編譯器                                                                                         | **enable** |
+| gcc-arm-none-eabi            | ARM 編譯器 (推薦使用 Docker 以避免環境問題)                                                        | disable    |
 | ilspy                        | C# 反編譯工具                                                                                      | **enable** |
 | make                         | -                                                                                                  | **enable** |
 | pyOCD                        | Python OpenOCD                                                                                     | disable    |
-| 7-Zip                        | 壓縮程式                                                                                           | **enable** |
+| usbipd-win                   | USB over IP 的 Windows 版本                                                                        | disable    |
+| 7-Zip                        | 壓縮/解壓縮軟體                                                                                    | disable    |
 | Adobe Reader                 | PDF 閱讀器                                                                                         | **enable** |
 | Anydesk                      | 遠端桌面軟體                                                                                       | **enable** |
 | Bandizip                     | 好看的壓縮程式                                                                                     | **enable** |
 | CPU-Z                        | CPU 資訊檢視工具                                                                                   | disable    |
 | CrystalDiskMark              | 硬碟效能檢測工具                                                                                   | disable    |
 | Discord                      | -                                                                                                  | **enable** |
-| Everything                   | 免費 Windows 搜尋引擎，搜尋速度快                                                                   | **enable** |
+| Everything                   | 免費 Windows 搜尋引擎，且比 Windows 內建的搜尋功能快上許多                                          | **enable** |
 | Fira Code                    | 好看的程式碼字型                                                                                   | `force`    |
 | Folder Size                  | 資料夾大小檢視工具                                                                                 | disable    |
 | Google Drive                 | -                                                                                                  | **enable** |
 | Hugo                         | 靜態網站產生器                                                                                     | **enable** |
-| Inkscape                     | 免費向量繪圖軟體，類似 Adobe Illustrator                                                            | **enable** |
+| Inkscape                     | 免費向量繪圖軟體，類似 Adobe Illustrator                                                            | disable    |
 | Keyviz                       | 按鍵可視化工具，它可以實時顯示用戶當前按下的按鍵。                                                   | **enable** |
-| Krita                        | 免費的數位繪圖軟體，類似 Adobe Photoshop                                                            | **enable** |
-| Logi Options+                | -                                                                                                  | **enable** |
+| Krita                        | 免費的數位繪圖軟體，類似 Adobe Photoshop                                                            | disable    |
+| Logi Options+                | -                                                                                                  | disable    |
 | Mega Downloader              | Mega.nz 下載器                                                                                     | disable    |
 | Notion                       | -                                                                                                  | disable    |
 | OBS Studio                   | 開源的串流軟體                                                                                     | **enable** |
 | PDF24                        | PDF 處理軟體                                                                                       | **enable** |
-| Parsec                       | 遠端桌面軟體 (近乎零延遲)                                                                          | **enable** |
+| PotPlayer                    | -                                                                                                  | **enable** |
 | PowerToys                    | Windows 10 / 11 的實用小工具                                                                       | **enable** |
 | QuickLook                    | 類似於 macOS 的快速預覽工具                                                                        | **enable** |
 | Revo Uninstaller             | Windows 的軟體卸載工具                                                                             | **enable** |
 | Spotify                      | -                                                                                                  | **enable** |
 | Telegram                     | -                                                                                                  | **enable** |
-| Video Player                 | macOS 安裝 VLC ; Windows 安裝 PotPlayer                                                            | **enable** |
+| VLC                          | -                                                                                                  | **enable** |
 | ffmepg                       | 影片處理 CLI 工具                                                                                  | **enable** |
 | yt-dlp                       | YouTube 影片下載 CLI 工具                                                                          | **enable** |
 <!-- WINDOWS_LISTS_END -->
@@ -156,13 +157,13 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 
 | Package                      | Description                                                                                        | Default    |
 |------------------------------|----------------------------------------------------------------------------------------------------|------------|
-| Android Studio               | -                                                                                                  | **enable** |
+| Android Studio               | -                                                                                                  | disable    |
 | Beyond Compare               | 用來做檔案差異比較的 GUI 軟體                                                                      | **enable** |
 | Docker                       | 虛擬化容器工具，會同時安裝 docker & docker-compose                                                  | **enable** |
 | Flutter                      | -                                                                                                  | disable    |
 | Git                          | -                                                                                                  | `force`    |
 | Golang                       | -                                                                                                  | disable    |
-| KiCad                        | 繪製電路原理圖和印刷電路板設計的自由軟體                                                           | **enable** |
+| KiCad                        | 繪製電路原理圖和印刷電路板設計的自由軟體                                                           | disable    |
 | LazyDocker                   | 一個簡單的終端機使用者介面，適用於 docker 與 docker-compose                                         | **enable** |
 | Node.js                      | -                                                                                                  | `force`    |
 | Pandoc                       | 文件轉換工具                                                                                       | **enable** |
@@ -177,10 +178,11 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | act-cli                      | GitHub Actions 的 CLI 工具                                                                         | disable    |
 | commitizen                   | Git Commit 規範工具                                                                                | **enable** |
 | dotnet-sdk                   | -                                                                                                  | **enable** |
-| gcc-arm-none-eabi            | ARM 編譯器                                                                                         | **enable** |
+| gcc-arm-none-eabi            | ARM 編譯器 (推薦使用 Docker 以避免環境問題)                                                        | disable    |
 | make                         | -                                                                                                  | **enable** |
+| minicom                      | Linux/Unix 系統的終端機通訊程式                                                                    | **enable** |
 | pyOCD                        | Python OpenOCD                                                                                     | disable    |
-| 7-Zip                        | 壓縮程式                                                                                           | **enable** |
+| 7-Zip                        | 壓縮/解壓縮軟體                                                                                    | disable    |
 | Adobe Creative Cloud         | Adobe 軟體管理工具                                                                                 | **enable** |
 | Adobe Reader                 | PDF 閱讀器                                                                                         | **enable** |
 | Anydesk                      | 遠端桌面軟體                                                                                       | **enable** |
@@ -188,19 +190,20 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | Fira Code                    | 好看的程式碼字型                                                                                   | `force`    |
 | Google Drive                 | -                                                                                                  | **enable** |
 | Hugo                         | 靜態網站產生器                                                                                     | **enable** |
-| Inkscape                     | 免費向量繪圖軟體，類似 Adobe Illustrator                                                            | **enable** |
-| Krita                        | 免費的數位繪圖軟體，類似 Adobe Photoshop                                                            | **enable** |
-| Logi Options+                | -                                                                                                  | **enable** |
+| Inkscape                     | 免費向量繪圖軟體，類似 Adobe Illustrator                                                            | disable    |
+| Krita                        | 免費的數位繪圖軟體，類似 Adobe Photoshop                                                            | disable    |
+| Logi Options+                | -                                                                                                  | disable    |
 | Logitech G HUB               | -                                                                                                  | **enable** |
 | Microsoft Edge               | -                                                                                                  | **enable** |
 | Notion                       | -                                                                                                  | disable    |
 | OBS Studio                   | 開源的串流軟體                                                                                     | **enable** |
-| Parsec                       | 遠端桌面軟體 (近乎零延遲)                                                                          | **enable** |
+| PotPlayer                    | -                                                                                                  | **enable** |
 | Spotify                      | -                                                                                                  | **enable** |
 | Telegram                     | -                                                                                                  | **enable** |
-| The Unarchiver               | macOS 的解壓縮軟體                                                                                 | **enable** |
-| Video Player                 | macOS 安裝 VLC ; Windows 安裝 PotPlayer                                                            | **enable** |
+| The Unarchiver               | macOS 的壓縮/解壓縮軟體                                                                            | **enable** |
+| VLC                          | -                                                                                                  | **enable** |
 | ffmepg                       | 影片處理 CLI 工具                                                                                  | **enable** |
+| ttc-source-han-serif         | 思源宋體                                                                                           | **enable** |
 | yt-dlp                       | YouTube 影片下載 CLI 工具                                                                          | **enable** |
 <!-- MACOS_LISTS_END -->
 
@@ -214,7 +217,7 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | Flutter                      | -                                                                                                  | disable    |
 | Git                          | -                                                                                                  | `force`    |
 | Golang                       | -                                                                                                  | disable    |
-| KiCad                        | 繪製電路原理圖和印刷電路板設計的自由軟體                                                           | **enable** |
+| KiCad                        | 繪製電路原理圖和印刷電路板設計的自由軟體                                                           | disable    |
 | LazyDocker                   | 一個簡單的終端機使用者介面，適用於 docker 與 docker-compose                                         | **enable** |
 | Node.js                      | -                                                                                                  | `force`    |
 | OpenSSH                      | -                                                                                                  | **enable** |
@@ -227,11 +230,13 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | VSCode Extension Development | VSCode 擴充套件開發工具                                                                            | disable    |
 | commitizen                   | Git Commit 規範工具                                                                                | **enable** |
 | dotnet-sdk                   | -                                                                                                  | **enable** |
-| gcc-arm-none-eabi            | ARM 編譯器                                                                                         | **enable** |
+| gcc-arm-none-eabi            | ARM 編譯器 (推薦使用 Docker 以避免環境問題)                                                        | disable    |
 | make                         | -                                                                                                  | **enable** |
+| minicom                      | Linux/Unix 系統的終端機通訊程式                                                                    | **enable** |
 | pyOCD                        | Python OpenOCD                                                                                     | disable    |
 | Hugo                         | 靜態網站產生器                                                                                     | **enable** |
-| Inkscape                     | 免費向量繪圖軟體，類似 Adobe Illustrator                                                            | **enable** |
+| Inkscape                     | 免費向量繪圖軟體，類似 Adobe Illustrator                                                            | disable    |
+| Noto Sans CJK                | Google 開發的中文字型                                                                              | **enable** |
 | OBS Studio                   | 開源的串流軟體                                                                                     | **enable** |
 | ffmepg                       | 影片處理 CLI 工具                                                                                  | **enable** |
 | yt-dlp                       | YouTube 影片下載 CLI 工具                                                                          | **enable** |
