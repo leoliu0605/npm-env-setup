@@ -345,9 +345,12 @@
         "pyOCD": {
             "description": "Python OpenOCD",
             "install": {
-                "linux": "pip install --upgrade pyocd",
-                "mac": "pip install --upgrade pyocd",
-                "windows": "pip install --upgrade pyocd"
+        "usbipd-win": {
+            "description": "USB over IP 的 Windows 版本",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "winget install --interactive --exact dorssel.usbipd-win"
             },
             "type": "disable"
         }
