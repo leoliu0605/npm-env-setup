@@ -81,5 +81,5 @@ jobs:
               run: |
                   git checkout main
                   git pull
-                  git merge --no-ff ${{ steps.changelog.outputs.tag }}
+                  git merge --no-ff --no-edit ${{ github.ref }}
                   git push
