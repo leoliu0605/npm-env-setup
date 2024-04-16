@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/leoli0605/npm-env-setup/compare/v1.0.2...v1.1.0) (2024-04-16)
+
+
+### Features
+
+* add ttc-source-han-serif font installation instructions, close [#13](https://github.com/leoli0605/npm-env-setup/issues/13) ([8d26c1e](https://github.com/leoli0605/npm-env-setup/commit/8d26c1eff61f9d6b03f8c42dbe3a39691555cb38))
+* add USB over IP Windows installation command, close [#11](https://github.com/leoli0605/npm-env-setup/issues/11) ([95e00c6](https://github.com/leoli0605/npm-env-setup/commit/95e00c687b30163ce29dd8410ed34b99cef20105))
+* install orbstack instead of docker on macOS, close [#12](https://github.com/leoli0605/npm-env-setup/issues/12) ([1a4d80a](https://github.com/leoli0605/npm-env-setup/commit/1a4d80aebcab614ab08f745ced7e4b13eb21440f))
+* update packageData.json with software enable/disable changes ([d83ad3e](https://github.com/leoli0605/npm-env-setup/commit/d83ad3ee1b8cefc92032c1bb0ef47b5d43fb3e3e))
+
+
+
 ## [1.0.2](https://github.com/leoli0605/npm-env-setup/compare/v1.0.1...v1.0.2) (2024-03-18)
 
 
