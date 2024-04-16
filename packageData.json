@@ -40,7 +40,7 @@
             "description": "虛擬化容器工具，會同時安裝 docker & docker-compose",
             "install": {
                 "linux": "sudo apt install docker.io -y && sudo apt install docker-compose -y",
-                "mac": "brew install --cask docker && brew install docker-compose",
+                "mac": "brew install orbstack && brew install docker-compose",
                 "windows": "choco install docker-desktop -y ; choco install docker-compose -y"
             },
             "type": "enable"
