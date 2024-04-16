@@ -2,9 +2,9 @@
 
 sudo apt-get install -y software-properties-common apt-transport-https lsb-release
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install -y \
+    software-properties-common \
     build-essential \
     curl \
-    git \
     jq \
     libbz2-dev \
     libffi-dev \
@@ -15,7 +15,6 @@ sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install -y \
     libsqlite3-dev \
     libssl-dev \
     llvm \
-    make \
     python3-openssl \
     tk-dev \
     wget \
