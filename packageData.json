@@ -7,7 +7,7 @@
                 "mac": "brew install --cask android-studio",
                 "windows": "choco install androidstudio -y"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "Beyond Compare": {
             "description": "用來做檔案差異比較的 GUI 軟體",
@@ -97,7 +97,7 @@
                 "mac": "brew install --cask kicad",
                 "windows": "choco install kicad -y"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "LINQPad 7": {
             "description": "一款強大的 .NET 程式碼編輯器",
@@ -140,7 +140,7 @@
             "install": {
                 "linux": "asdf plugin add nodejs && asdf install nodejs 16.20.2 && asdf global nodejs 16.20.2",
                 "mac": "asdf plugin add nodejs && asdf install nodejs 18.18.0 && asdf global nodejs 18.18.0",
-                "windows": "choco install nodejs --version=18.18.0 -y"
+                "windows": "choco install nodejs --version=18.18.0 -y ; choco pin add -n=nodejs"
             },
             "type": "force"
         },
@@ -169,7 +169,7 @@
                 "mac": "",
                 "windows": "choco install putty -y"
             },
-            "type": "disable"
+            "type": "enable"
         },
         "PySide6": {
             "description": "",
@@ -268,7 +268,7 @@
                 "mac": "",
                 "windows": "choco install visualstudio2022community -y"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "Visual Studio Code": {
             "description": "",
@@ -316,13 +316,13 @@
             "type": "enable"
         },
         "gcc-arm-none-eabi": {
-            "description": "ARM 編譯器",
+            "description": "ARM 編譯器 (推薦使用 Docker 以避免環境問題)",
             "install": {
                 "linux": "sudo apt install gcc-arm-none-eabi -y",
                 "mac": "brew install --cask gcc-arm-embedded",
                 "windows": "choco install gcc-arm-embedded -y"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "ilspy": {
             "description": "C# 反編譯工具",
@@ -342,9 +342,24 @@
             },
             "type": "enable"
         },
+        "minicom": {
+            "description": "Linux/Unix 系統的終端機通訊程式",
+            "install": {
+                "linux": "sudo apt install minicom -y",
+                "mac": "brew install minicom",
+                "windows": ""
+            },
+            "type": "enable"
+        },
         "pyOCD": {
             "description": "Python OpenOCD",
             "install": {
+                "linux": "pip install --upgrade pyocd --user",
+                "mac": "pip install --upgrade pyocd --user",
+                "windows": "pip install --upgrade pyocd --user"
+            },
+            "type": "disable"
+        },
         "usbipd-win": {
             "description": "USB over IP 的 Windows 版本",
             "install": {
@@ -357,13 +372,13 @@
     },
     "MISC": {
         "7-Zip": {
-            "description": "壓縮程式",
+            "description": "壓縮/解壓縮軟體",
             "install": {
                 "linux": "",
                 "mac": "brew install p7zip",
                 "windows": "choco install 7zip -y"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "Adobe Creative Cloud": {
             "description": "Adobe 軟體管理工具",
@@ -429,7 +444,7 @@
             "type": "enable"
         },
         "Everything": {
-            "description": "免費 Windows 搜尋引擎，搜尋速度快",
+            "description": "免費 Windows 搜尋引擎，且比 Windows 內建的搜尋功能快上許多",
             "install": {
                 "linux": "",
                 "mac": "",
@@ -480,7 +495,7 @@
                 "mac": "brew install --cask inkscape",
                 "windows": "choco install inkscape -y"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "Keyviz": {
             "description": "按鍵可視化工具，它可以實時顯示用戶當前按下的按鍵。",
@@ -498,7 +513,7 @@
                 "mac": "brew install --cask krita",
                 "windows": "choco install krita -y"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "Logi Options+": {
             "description": "",
@@ -507,7 +522,7 @@
                 "mac": "brew install --cask logi-options-plus",
                 "windows": "choco install logioptionsplus -y"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "Logitech G HUB": {
             "description": "",
@@ -545,6 +560,15 @@
             },
             "type": "disable"
         },
+        "Noto Sans CJK": {
+            "description": "Google 開發的中文字型",
+            "install": {
+                "linux": "sudo apt-get install -y fonts-noto-cjk",
+                "mac": "",
+                "windows": ""
+            },
+            "type": "enable"
+        },
         "OBS Studio": {
             "description": "開源的串流軟體",
             "install": {
@@ -563,12 +587,12 @@
             },
             "type": "enable"
         },
-        "Parsec": {
-            "description": "遠端桌面軟體 (近乎零延遲)",
+        "PotPlayer": {
+            "description": "",
             "install": {
                 "linux": "",
-                "mac": "brew install --cask parsec",
-                "windows": "choco install parsec -y"
+                "mac": "brew install --cask vlc",
+                "windows": "choco install potplayer -y"
             },
             "type": "enable"
         },
@@ -618,7 +642,7 @@
             "type": "enable"
         },
         "The Unarchiver": {
-            "description": "macOS 的解壓縮軟體",
+            "description": "macOS 的壓縮/解壓縮軟體",
             "install": {
                 "linux": "",
                 "mac": "brew install --cask the-unarchiver",
@@ -626,12 +650,12 @@
             },
             "type": "enable"
         },
-        "Video Player": {
-            "description": "macOS 安裝 VLC ; Windows 安裝 PotPlayer",
+        "VLC": {
+            "description": "",
             "install": {
                 "linux": "",
                 "mac": "brew install --cask vlc",
-                "windows": "choco install potplayer -y"
+                "windows": "choco install vlc -y"
             },
             "type": "enable"
         },
