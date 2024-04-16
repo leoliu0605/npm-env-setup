@@ -644,6 +644,15 @@
             },
             "type": "enable"
         },
+        "ttc-source-han-serif": {
+            "description": "思源宋體",
+            "install": {
+                "linux": "",
+                "mac": "brew install ttc-source-han-serif",
+                "windows": ""
+            },
+            "type": "enable"
+        },
         "yt-dlp": {
             "description": "YouTube 影片下載 CLI 工具",
             "install": {
