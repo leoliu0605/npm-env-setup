@@ -44,7 +44,7 @@ class SetupManager {
 
         selectedPackages.forEach((p) => p && this.shell.addCommand(p.installCommand));
 
-        refreshEnvironment();
+        this.refreshEnvironment();
 
         if (selectedPackages.some((p) => p && p.packageName.startsWith('Python'))) {
             if (os.platform() === 'win32') {
@@ -57,7 +57,7 @@ class SetupManager {
             /* Install Poetry */
             const poetryInstallCommand = os.platform() === 'win32' ? '(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -' : 'asdf plugin add poetry && asdf install poetry latest && asdf global poetry latest';
             this.shell.addCommand(poetryInstallCommand);
-            refreshEnvironment();
+            this.refreshEnvironment();
             this.shell.addCommand('poetry --version');
             this.shell.addCommand('poetry config virtualenvs.in-project true');
             this.shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/pip.setup'), 'utf8').trim());
@@ -80,11 +80,11 @@ class SetupManager {
                     console.log('Ubuntu 20.04 not detected');
                 }
             }
-            refreshEnvironment();
+            this.refreshEnvironment();
             this.shell.addCommand('node --version');
             this.shell.addCommand('npm --version');
             this.shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/npm.setup'), 'utf8').trim());
-            refreshEnvironment();
+            this.refreshEnvironment();
         }
 
         if (os.platform() === 'win32' && selectedPackages.some((p) => p && p.packageName.startsWith('Sublime Text'))) {
@@ -97,7 +97,7 @@ class SetupManager {
             this.shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/macos/macsetup.sh'), 'utf8').trim());
         }
 
-        if (!isLinuxRunAsRoot()) this.shell.addCommand('npx @leoli0605/git-setup');
+        if (!this.isLinuxRunAsRoot()) this.shell.addCommand('npx @leoli0605/git-setup');
     }
 
     setupNonWindowsEnvironment() {
