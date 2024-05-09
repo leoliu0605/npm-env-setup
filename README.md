@@ -133,7 +133,6 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | Folder Size                  | 資料夾大小檢視工具                                                                                 | disable    |
 | Google Drive                 | -                                                                                                  | **enable** |
 | Hugo                         | 靜態網站產生器                                                                                     | **enable** |
-| ImageMagick                  | 圖像處理工具                                                                                       | **enable** |
 | Inkscape                     | 免費向量繪圖軟體，類似 Adobe Illustrator                                                            | disable    |
 | Keyviz                       | 按鍵可視化工具，它可以實時顯示用戶當前按下的按鍵。                                                   | **enable** |
 | Krita                        | 免費的數位繪圖軟體，類似 Adobe Photoshop                                                            | disable    |
@@ -194,7 +193,6 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | Fira Code                    | 好看的程式碼字型                                                                                   | `force`    |
 | Google Drive                 | -                                                                                                  | **enable** |
 | Hugo                         | 靜態網站產生器                                                                                     | **enable** |
-| ImageMagick                  | 圖像處理工具                                                                                       | **enable** |
 | Inkscape                     | 免費向量繪圖軟體，類似 Adobe Illustrator                                                            | disable    |
 | Krita                        | 免費的數位繪圖軟體，類似 Adobe Photoshop                                                            | disable    |
 | Logi Options+                | -                                                                                                  | disable    |
@@ -242,7 +240,6 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | minicom                      | Linux/Unix 系統的終端機通訊程式                                                                    | **enable** |
 | pyOCD                        | Python OpenOCD                                                                                     | **enable** |
 | Hugo                         | 靜態網站產生器                                                                                     | **enable** |
-| ImageMagick                  | 圖像處理工具                                                                                       | **enable** |
 | Inkscape                     | 免費向量繪圖軟體，類似 Adobe Illustrator                                                            | disable    |
 | Noto Sans CJK                | Google 開發的中文字型                                                                              | **enable** |
 | OBS Studio                   | 開源的串流軟體                                                                                     | **enable** |
