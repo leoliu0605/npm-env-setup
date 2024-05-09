@@ -138,7 +138,7 @@
         "Node.js": {
             "description": "",
             "install": {
-                "linux": "asdf plugin add nodejs && asdf install nodejs 18.18.0 && asdf global nodejs 18.18.0",
+                "linux": "echo 'This line will be replaced by the code to meet different versions of Ubuntu'",
                 "mac": "asdf plugin add nodejs && asdf install nodejs 18.18.0 && asdf global nodejs 18.18.0",
                 "windows": "choco install nodejs --version=18.18.0 -y ; choco pin add -n=nodejs"
             },

@@ -42,6 +42,26 @@ class SetupManager {
             this.setupNonWindowsEnvironment();
         }
 
+        selectedPackages.forEach((p) => {
+            if (p) {
+                if (p.packageName.startsWith('Node.js')) {
+                    if (os.platform() === 'linux' && fs.existsSync('/etc/os-release')) {
+                        const data = fs.readFileSync('/etc/os-release', 'utf8');
+                        const isUbuntuVersion2X = /VERSION_ID="20\.\d+"|VERSION_ID="2[1-9]\.\d+"/.test(data) || /PRETTY_NAME="Ubuntu 20\.\d+.*"|PRETTY_NAME="Ubuntu 2[1-9]\.\d+.*"/.test(data);
+                        if (isUbuntuVersion2X) {
+                            console.log('Ubuntu 2x.xx is detected');
+                            p.installCommand = 'asdf plugin add nodejs && asdf install nodejs 18.18.0 && asdf global nodejs 18.18.0 && npm install -g pnpm@latest';
+                        } else {
+                            console.log('Ubuntu 1x.xx is detected');
+                            p.installCommand = 'asdf plugin add nodejs && asdf install nodejs 16.20.2 && asdf global nodejs 16.20.2';
+                        }
+                    }
+                }
+                this.shell.addCommand(p.installCommand);
+                this.refreshEnvironment();
+            }
+        });
+
         if (selectedPackages.some((p) => p && p.packageName.startsWith('Python'))) {
             if (os.platform() === 'win32') {
                 this.shell.addEnvironment('$HOME\\AppData\\Roaming\\Python\\Scripts');
@@ -59,32 +79,18 @@ class SetupManager {
             this.shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/pip.setup'), 'utf8').trim());
         }
 
-        if (os.platform() === 'win32' && selectedPackages.some((p) => p && p.packageName.startsWith('Rust'))) {
-            this.shell.addEnvironment('$HOME\\.cargo\\bin');
-            this.shell.addCommand('refreshenv\n');
-            this.shell.addCommand('rust --version');
-        }
-
         if (selectedPackages.some((p) => p && p.packageName.startsWith('Node.js'))) {
-            if (os.platform() === 'linux' && fs.existsSync('/etc/os-release')) {
-                const data = fs.readFileSync('/etc/os-release', 'utf8');
-                const isUbuntuVersion2X = /VERSION_ID="20\.\d+"|VERSION_ID="2[1-9]\.\d+"/.test(data) || /PRETTY_NAME="Ubuntu 20\.\d+.*"|PRETTY_NAME="Ubuntu 2[1-9]\.\d+.*"/.test(data);
-                if (!isUbuntuVersion2X) {
-                    console.log('Ubuntu 2x.xx not detected');
-                    this.shell.addCommand('asdf install nodejs 16.20.2');
-                    this.shell.addCommand('asdf global nodejs 16.20.2');
-                }
-            }
-            this.refreshEnvironment();
             this.shell.addCommand('node --version');
             this.shell.addCommand('npm --version');
             this.shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/npm.setup'), 'utf8').trim());
             this.refreshEnvironment();
         }
 
-        selectedPackages.forEach((p) => p && this.shell.addCommand(p.installCommand));
-
-        this.refreshEnvironment();
+        if (os.platform() === 'win32' && selectedPackages.some((p) => p && p.packageName.startsWith('Rust'))) {
+            this.shell.addEnvironment('$HOME\\.cargo\\bin');
+            this.shell.addCommand('refreshenv\n');
+            this.shell.addCommand('rust --version');
+        }
 
         if (os.platform() === 'win32' && selectedPackages.some((p) => p && p.packageName.startsWith('Sublime Text'))) {
             this.shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/windows/SublimeSetup.ps1'), 'utf8').trim().replace('${PATH}', path.join(__dirname, 'scripts/windows/Preferences.sublime-settings')));
@@ -112,6 +118,7 @@ class SetupManager {
             this.shell.addEnvironment('\'. "$HOME/.asdf/completions/asdf.bash"\'');
             this.shell.addCommand('export PATH="$HOME/.asdf/bin:$HOME/.asdf/shims:$PATH"');
         }
+        this.refreshEnvironment();
     }
 
     refreshEnvironment() {
