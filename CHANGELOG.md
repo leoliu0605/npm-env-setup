@@ -1,3 +1,12 @@
+## [1.2.2](https://github.com/leoli0605/npm-env-setup/compare/v1.2.1...v1.2.2) (2024-05-09)
+
+
+### Bug Fixes
+
+* fix some critical error ([71e0a5b](https://github.com/leoli0605/npm-env-setup/commit/71e0a5b43ea709b47f4391c80db14f1e51977da3))
+
+
+
 ## [1.2.1](https://github.com/leoli0605/npm-env-setup/compare/v1.2.0...v1.2.1) (2024-05-09)
 
 
