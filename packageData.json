@@ -680,8 +680,8 @@
         "ffmepg": {
             "description": "影片處理 CLI 工具",
             "install": {
-                "linux": "asdf plugin add ffmpeg && asdf install ffmpeg latest && asdf global ffmpeg latest",
-                "mac": "asdf plugin add ffmpeg && asdf install ffmpeg latest && asdf global ffmpeg latest",
+                "linux": "asdf plugin add nasm && asdf install nasm latest && asdf global nasm latest && asdf plugin add ffmpeg && asdf install ffmpeg latest && asdf global ffmpeg latest",
+                "mac": "asdf plugin add nasm && asdf install nasm latest && asdf global nasm latest && asdf plugin add ffmpeg && asdf install ffmpeg latest && asdf global ffmpeg latest",
                 "windows": "choco install ffmpeg -y"
             },
             "type": "enable"
