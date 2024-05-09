@@ -1,3 +1,13 @@
+## [1.2.4](https://github.com/leoli0605/npm-env-setup/compare/v1.2.3...v1.2.4) (2024-05-09)
+
+
+### Bug Fixes
+
+* fix some critical bugs ([61d353d](https://github.com/leoli0605/npm-env-setup/commit/61d353d8fed6682e59df7c54011c9d082015684d))
+* update lazydocker installation commands ([961d71d](https://github.com/leoli0605/npm-env-setup/commit/961d71de8777465a34b37b119daf950f0d117a4e))
+
+
+
 ## [1.2.3](https://github.com/leoli0605/npm-env-setup/compare/v1.2.2...v1.2.3) (2024-05-09)
 
 
