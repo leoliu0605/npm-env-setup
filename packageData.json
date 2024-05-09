@@ -300,9 +300,9 @@
         "dotnet-sdk": {
             "description": "",
             "install": {
-                "linux": "sudo apt install dotnet-sdk -y",
-                "mac": "brew install --cask dotnet-sdk",
-                "windows": "choco install dotnet-sdk -y"
+                "linux": "curl -sSL https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh | bash && echo -e '\nexport PATH=\"$HOME/.dotnet:$PATH\"' >> ~/.bashrc && source ~/.bashrc",
+                "mac": "curl -sSL https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh | bash && echo -e '\nexport PATH=\"$HOME/.dotnet:$PATH\"' >> ~/.bashrc && source ~/.bashrc",
+                "windows": "Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass ; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.ps1'))"
             },
             "type": "enable"
         },
