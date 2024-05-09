@@ -482,8 +482,8 @@
         "Hugo": {
             "description": "靜態網站產生器",
             "install": {
-                "linux": "sudo apt install hugo -y",
-                "mac": "brew install hugo",
+                "linux": "asdf plugin add hugo && HUGO_LATEST_VERSION=$(asdf list-all hugo | tail -1) && asdf install hugo extended_$HUGO_LATEST_VERSION && asdf global hugo extended_$HUGO_LATEST_VERSION",
+                "mac": "asdf plugin add hugo && HUGO_LATEST_VERSION=$(asdf list-all hugo | tail -1) && asdf install hugo extended_$HUGO_LATEST_VERSION && asdf global hugo extended_$HUGO_LATEST_VERSION",
                 "windows": "choco install hugo-extended -y"
             },
             "type": "enable"
