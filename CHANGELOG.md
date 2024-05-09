@@ -1,3 +1,14 @@
+# [1.2.0](https://github.com/leoli0605/npm-env-setup/compare/v1.1.0...v1.2.0) (2024-05-09)
+
+
+### Features
+
+* migrate the installation method to asdf, close [#16](https://github.com/leoli0605/npm-env-setup/issues/16) ([e8ad820](https://github.com/leoli0605/npm-env-setup/commit/e8ad820ac85ad95ccd0fce1f6f318bff927ea7c0))
+* use asdf to install latest gohugo, close [#14](https://github.com/leoli0605/npm-env-setup/issues/14) ([88371a0](https://github.com/leoli0605/npm-env-setup/commit/88371a041c0aa57236816e7c9b1af2835320726d))
+* use script to install dotnet-sdk, close [#15](https://github.com/leoli0605/npm-env-setup/issues/15) ([964cfd8](https://github.com/leoli0605/npm-env-setup/commit/964cfd85fb50f5323ccc89cd84c95ea976825c07))
+
+
+
 # [1.1.0](https://github.com/leoli0605/npm-env-setup/compare/v1.0.2...v1.1.0) (2024-04-16)
 
 
