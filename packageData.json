@@ -138,7 +138,7 @@
         "Node.js": {
             "description": "",
             "install": {
-                "linux": "asdf plugin add nodejs && asdf install nodejs 18.18.0 && asdf global nodejs 18.18.0",
+                "linux": "echo 'This line will be replaced by the code to meet different versions of Ubuntu'",
                 "mac": "asdf plugin add nodejs && asdf install nodejs 18.18.0 && asdf global nodejs 18.18.0",
                 "windows": "choco install nodejs --version=18.18.0 -y ; choco pin add -n=nodejs"
             },
@@ -336,8 +336,8 @@
         "lazydocker": {
             "description": "一個簡單的終端機使用者介面，適用於 docker 與 docker-compose",
             "install": {
-                "linux": "asdf install lazydocker latest && asdf global lazydocker latest",
-                "mac": "asdf install lazydocker latest && asdf global lazydocker latest",
+                "linux": "asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git && asdf install lazydocker latest && asdf global lazydocker latest",
+                "mac": "asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git && asdf install lazydocker latest && asdf global lazydocker latest",
                 "windows": "choco install lazydocker -y"
             },
             "type": "enable"

@@ -1,4 +1,3 @@
-npm install -g pnpm@latest
 npm install -g npm-check-updates@latest
 npm install -g @leoli0605/git-setup@latest
 npm list -g

@@ -19,4 +19,5 @@ sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install -y \
     tk-dev \
     wget \
     xz-utils \
-    zlib1g-dev
+    zlib1g-dev \
+    git

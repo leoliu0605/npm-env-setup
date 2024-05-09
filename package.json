@@ -26,6 +26,9 @@
   "scripts": {
     "start": "node ./src/index.mjs",
     "test": "node ./test/test.mjs",
+    "test:docker": "docker build -t env-setup . && docker run --rm -it env-setup /bin/bash",
+    "test:docker-20": "docker build --build-arg UBUNTU_VERSION=20.04 -t env-setup . && docker run --rm -it env-setup /bin/bash",
+    "test:docker-18": "docker build --build-arg UBUNTU_VERSION=18.04 -t env-setup . && docker run --rm -it env-setup /bin/bash",
     "build": "webpack && npm run build:pkg",
     "production": "webpack --mode production && npm run build:pkg",
     "build:pkg": "pkg dist/env-setup.js --config pkg.config.json",
