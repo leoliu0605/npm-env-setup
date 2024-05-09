@@ -138,7 +138,7 @@
         "Node.js": {
             "description": "",
             "install": {
-                "linux": "asdf plugin add nodejs && asdf install nodejs 16.20.2 && asdf global nodejs 16.20.2",
+                "linux": "asdf plugin add nodejs && asdf install nodejs 18.18.0 && asdf global nodejs 18.18.0",
                 "mac": "asdf plugin add nodejs && asdf install nodejs 18.18.0 && asdf global nodejs 18.18.0",
                 "windows": "choco install nodejs --version=18.18.0 -y ; choco pin add -n=nodejs"
             },
@@ -503,15 +503,6 @@
                 "linux": "asdf plugin add hugo && HUGO_LATEST_VERSION=$(asdf list-all hugo | tail -1) && asdf install hugo extended_$HUGO_LATEST_VERSION && asdf global hugo extended_$HUGO_LATEST_VERSION",
                 "mac": "asdf plugin add hugo && HUGO_LATEST_VERSION=$(asdf list-all hugo | tail -1) && asdf install hugo extended_$HUGO_LATEST_VERSION && asdf global hugo extended_$HUGO_LATEST_VERSION",
                 "windows": "choco install hugo-extended -y"
-            },
-            "type": "enable"
-        },
-        "ImageMagick": {
-            "description": "圖像處理工具",
-            "install": {
-                "linux": "asdf plugin add imagemagick && asdf install imagemagick latest && asdf global imagemagick latest",
-                "mac": "asdf plugin add imagemagick && asdf install imagemagick latest && asdf global imagemagick latest",
-                "windows": "choco install imagemagick -y"
             },
             "type": "enable"
         },
