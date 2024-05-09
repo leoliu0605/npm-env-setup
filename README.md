@@ -35,7 +35,7 @@ Open `powershell` and run the following command. This will start setting up your
 
 <!-- WINDOWS_LINK_X64_START -->
 ```shell
-powershell.exe -Command "Invoke-WebRequest -Uri https://github.com/leoli0605/npm-env-setup/releases/download/v1.2.3/env-setup-win-x64.exe -OutFile env-setup-win-x64.exe; Start-Process env-setup-win-x64.exe -Wait; Remove-Item env-setup-win-x64.exe -Force"
+powershell.exe -Command "Invoke-WebRequest -Uri https://github.com/leoli0605/npm-env-setup/releases/download/v1.2.4/env-setup-win-x64.exe -OutFile env-setup-win-x64.exe; Start-Process env-setup-win-x64.exe -Wait; Remove-Item env-setup-win-x64.exe -Force"
 ```
 <!-- WINDOWS_LINK_X64_END -->
 
@@ -47,7 +47,7 @@ For Mac users, the process is just as simple. Depending on the type of chip your
 
 <!-- MACOS_LINK_X64_START -->
 ```shell
-curl -L https://github.com/leoli0605/npm-env-setup/releases/download/v1.2.3/env-setup-macos-x64 -o env-setup-macos-x64 && chmod +x env-setup-macos-x64 && ./env-setup-macos-x64 && rm -f env-setup-macos-x64
+curl -L https://github.com/leoli0605/npm-env-setup/releases/download/v1.2.4/env-setup-macos-x64 -o env-setup-macos-x64 && chmod +x env-setup-macos-x64 && ./env-setup-macos-x64 && rm -f env-setup-macos-x64
 ```
 <!-- MACOS_LINK_X64_END -->
 
@@ -55,7 +55,7 @@ curl -L https://github.com/leoli0605/npm-env-setup/releases/download/v1.2.3/env-
 
 <!-- MACOS_LINK_ARM64_START -->
 ```shell
-curl -L https://github.com/leoli0605/npm-env-setup/releases/download/v1.2.3/env-setup-macos-arm64 -o env-setup-macos-arm64 && chmod +x env-setup-macos-arm64 && ./env-setup-macos-arm64 && rm -f env-setup-macos-arm64
+curl -L https://github.com/leoli0605/npm-env-setup/releases/download/v1.2.4/env-setup-macos-arm64 -o env-setup-macos-arm64 && chmod +x env-setup-macos-arm64 && ./env-setup-macos-arm64 && rm -f env-setup-macos-arm64
 ```
 <!-- MACOS_LINK_ARM64_END -->
 
@@ -65,7 +65,7 @@ For Linux users running Ubuntu 18.04 LTS or newer versions, execute the followin
 
 <!-- LINUX_LINK_X64_START -->
 ```shell
-curl -L https://github.com/leoli0605/npm-env-setup/releases/download/v1.2.3/env-setup-linux-x64 -o env-setup-linux-x64 && chmod +x env-setup-linux-x64 && ./env-setup-linux-x64 && rm -f env-setup-linux-x64
+curl -L https://github.com/leoli0605/npm-env-setup/releases/download/v1.2.4/env-setup-linux-x64 -o env-setup-linux-x64 && chmod +x env-setup-linux-x64 && ./env-setup-linux-x64 && rm -f env-setup-linux-x64
 ```
 <!-- LINUX_LINK_X64_END -->
 
