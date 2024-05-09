@@ -44,9 +44,7 @@ class SetupManager {
 
         selectedPackages.forEach((p) => p && this.shell.addCommand(p.installCommand));
 
-        if (os.platform() === 'win32') {
-            this.shell.addCommand('refreshenv\n');
-        }
+        refreshEnvironment();
 
         if (selectedPackages.some((p) => p && p.packageName.startsWith('Python'))) {
             if (os.platform() === 'win32') {
@@ -54,10 +52,12 @@ class SetupManager {
             } else {
                 this.shell.addEnvironment('\'export PATH="$HOME/.local/bin:$PATH"\'');
             }
-            const poetryInstallCommand = os.platform() === 'win32' ? '(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -' : 'curl -sSL https://install.python-poetry.org | python3';
-            this.shell.addCommand(poetryInstallCommand);
             this.shell.addCommand('python --version');
             this.shell.addCommand('pip --version');
+            /* Install Poetry */
+            const poetryInstallCommand = os.platform() === 'win32' ? '(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -' : 'asdf plugin add poetry && asdf install poetry latest && asdf global poetry latest';
+            this.shell.addCommand(poetryInstallCommand);
+            refreshEnvironment();
             this.shell.addCommand('poetry --version');
             this.shell.addCommand('poetry config virtualenvs.in-project true');
             this.shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/pip.setup'), 'utf8').trim());
@@ -80,12 +80,11 @@ class SetupManager {
                     console.log('Ubuntu 20.04 not detected');
                 }
             }
+            refreshEnvironment();
             this.shell.addCommand('node --version');
             this.shell.addCommand('npm --version');
             this.shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/npm.setup'), 'utf8').trim());
-            if (os.platform() === 'win32') {
-                this.shell.addCommand('refreshenv\n');
-            }
+            refreshEnvironment();
         }
 
         if (os.platform() === 'win32' && selectedPackages.some((p) => p && p.packageName.startsWith('Sublime Text'))) {
@@ -98,7 +97,7 @@ class SetupManager {
             this.shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/macos/macsetup.sh'), 'utf8').trim());
         }
 
-        this.shell.addCommand('npx @leoli0605/git-setup');
+        if (!isLinuxRunAsRoot()) this.shell.addCommand('npx @leoli0605/git-setup');
     }
 
     setupNonWindowsEnvironment() {
@@ -114,6 +113,21 @@ class SetupManager {
             this.shell.addEnvironment('\'. "$HOME/.asdf/completions/asdf.bash"\'');
             this.shell.addCommand('export PATH="$HOME/.asdf/bin:$HOME/.asdf/shims:$PATH"');
         }
+    }
+
+    refreshEnvironment() {
+        if (os.platform() === 'win32') {
+            this.shell.addCommand('refreshenv\n');
+        } else {
+            this.shell.addCommand('source ~/.bashrc\n');
+            if (fs.existsSync(path.join(os.homedir(), '.zshrc'))) {
+                this.shell.addCommand('source ~/.zshrc\n');
+            }
+        }
+    }
+
+    isLinuxRunAsRoot() {
+        return os.platform() === 'linux' && process.getuid() === 0;
     }
 
     finalizeScript() {

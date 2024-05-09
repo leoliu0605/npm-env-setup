@@ -18,6 +18,15 @@
             },
             "type": "enable"
         },
+        "CMake": {
+            "description": "跨平台的建構系統產生工具",
+            "install": {
+                "linux": "asdf plugin add cmake && asdf install cmake latest && asdf global cmake latest",
+                "mac": "asdf plugin add cmake && asdf install cmake latest && asdf global cmake latest",
+                "windows": "choco install cmake -y"
+            },
+            "type": "disable"
+        },
         "Cuda": {
             "description": "控制 NVIDIA GPU 的 CLI 工具",
             "install": {
@@ -75,11 +84,11 @@
         "Golang": {
             "description": "",
             "install": {
-                "linux": "asdf plugin add golang && asdf install golang 1.20 && asdf global golang 1.20",
-                "mac": "brew install coreutils && asdf plugin add golang && asdf install golang 1.20 && asdf global golang 1.20",
+                "linux": "asdf plugin add golang && asdf install golang latest && asdf global golang latest",
+                "mac": "brew install coreutils && asdf plugin add golang && asdf install golang latest && asdf global golang latest",
                 "windows": "choco install golang -y"
             },
-            "type": "disable"
+            "type": "enable"
         },
         "ImageJ": {
             "description": "基於 Java 的圖像處理軟體",
@@ -105,15 +114,6 @@
                 "linux": "",
                 "mac": "",
                 "windows": "choco install linqpad7 -y --ignore-checksums"
-            },
-            "type": "enable"
-        },
-        "LazyDocker": {
-            "description": "一個簡單的終端機使用者介面，適用於 docker 與 docker-compose",
-            "install": {
-                "linux": "asdf install lazydocker latest && asdf global lazydocker latest",
-                "mac": "asdf install lazydocker latest && asdf global lazydocker latest",
-                "windows": "choco install lazydocker -y"
             },
             "type": "enable"
         },
@@ -156,9 +156,9 @@
         "Pandoc": {
             "description": "文件轉換工具",
             "install": {
-                "linux": "sudo apt install -y pandoc texlive-full",
-                "mac": "brew install pandoc && brew install --cask mactex-no-gui",
-                "windows": "choco install pandoc miktex -y"
+                "linux": "asdf plugin add pandoc && asdf install pandoc latest && asdf global pandoc latest && asdf plugin add tinytex && asdf install tinytex latest && asdf global tinytex latest",
+                "mac": "asdf plugin add pandoc && asdf install pandoc latest && asdf global pandoc latest && asdf plugin add tinytex && asdf install tinytex latest && asdf global tinytex latest",
+                "windows": "choco install pandoc tinytex -y"
             },
             "type": "enable"
         },
@@ -250,7 +250,7 @@
                 "mac": "npm install -g yo generator-code vsce esbuild",
                 "windows": "npm install -g yo generator-code vsce esbuild"
             },
-            "type": "disable"
+            "type": "enable"
         },
         "Virtual Box": {
             "description": "自由及開放原始碼的虛擬機器軟體",
@@ -280,10 +280,10 @@
             "type": "enable"
         },
         "act-cli": {
-            "description": "GitHub Actions 的 CLI 工具",
+            "description": "GitHub Actions 的本地模擬工具",
             "install": {
-                "linux": "",
-                "mac": "brew install act",
+                "linux": "asdf plugin add act && asdf install act latest && asdf global act latest",
+                "mac": "asdf plugin add act && asdf install act latest && asdf global act latest",
                 "windows": "choco install act-cli -y"
             },
             "type": "disable"
@@ -316,13 +316,13 @@
             "type": "enable"
         },
         "gcc-arm-none-eabi": {
-            "description": "ARM 編譯器 (推薦使用 Docker 以避免環境問題)",
+            "description": "ARM 編譯器",
             "install": {
-                "linux": "sudo apt install gcc-arm-none-eabi -y",
-                "mac": "brew install --cask gcc-arm-embedded",
+                "linux": "asdf plugin add gcc-arm-none-eabi && asdf install gcc-arm-none-eabi latest && asdf global gcc-arm-none-eabi latest",
+                "mac": "asdf plugin add gcc-arm-none-eabi && asdf install gcc-arm-none-eabi latest && asdf global gcc-arm-none-eabi latest",
                 "windows": "choco install gcc-arm-embedded -y"
             },
-            "type": "disable"
+            "type": "enable"
         },
         "ilspy": {
             "description": "C# 反編譯工具",
@@ -333,11 +333,29 @@
             },
             "type": "enable"
         },
+        "lazydocker": {
+            "description": "一個簡單的終端機使用者介面，適用於 docker 與 docker-compose",
+            "install": {
+                "linux": "asdf install lazydocker latest && asdf global lazydocker latest",
+                "mac": "asdf install lazydocker latest && asdf global lazydocker latest",
+                "windows": "choco install lazydocker -y"
+            },
+            "type": "enable"
+        },
+        "lazygit": {
+            "description": "一個簡單的終端機使用者介面，適用於 git",
+            "install": {
+                "linux": "asdf plugin add lazygit && asdf install lazygit latest && asdf global lazygit latest",
+                "mac": "asdf plugin add lazygit && asdf install lazygit latest && asdf global lazygit latest",
+                "windows": ""
+            },
+            "type": "enable"
+        },
         "make": {
             "description": "",
             "install": {
-                "linux": "sudo apt install make -y",
-                "mac": "brew install make",
+                "linux": "asdf plugin add make && asdf install make latest && asdf global make latest",
+                "mac": "asdf plugin add make && asdf install make latest && asdf global make latest",
                 "windows": "choco install make -y"
             },
             "type": "enable"
@@ -358,7 +376,7 @@
                 "mac": "pip install --upgrade pyocd --user",
                 "windows": "pip install --upgrade pyocd --user"
             },
-            "type": "disable"
+            "type": "enable"
         },
         "usbipd-win": {
             "description": "USB over IP 的 Windows 版本",
@@ -367,7 +385,7 @@
                 "mac": "",
                 "windows": "winget install --interactive --exact dorssel.usbipd-win"
             },
-            "type": "disable"
+            "type": "enable"
         }
     },
     "MISC": {
@@ -488,6 +506,15 @@
             },
             "type": "enable"
         },
+        "ImageMagick": {
+            "description": "圖像處理工具",
+            "install": {
+                "linux": "asdf plugin add imagemagick && asdf install imagemagick latest && asdf global imagemagick latest",
+                "mac": "asdf plugin add imagemagick && asdf install imagemagick latest && asdf global imagemagick latest",
+                "windows": "choco install imagemagick -y"
+            },
+            "type": "enable"
+        },
         "Inkscape": {
             "description": "免費向量繪圖軟體，類似 Adobe Illustrator",
             "install": {
@@ -591,7 +618,7 @@
             "description": "",
             "install": {
                 "linux": "",
-                "mac": "brew install --cask vlc",
+                "mac": "",
                 "windows": "choco install potplayer -y"
             },
             "type": "enable"
@@ -662,8 +689,8 @@
         "ffmepg": {
             "description": "影片處理 CLI 工具",
             "install": {
-                "linux": "sudo apt install ffmpeg -y",
-                "mac": "brew install ffmpeg",
+                "linux": "asdf plugin add ffmpeg && asdf install ffmpeg latest && asdf global ffmpeg latest",
+                "mac": "asdf plugin add ffmpeg && asdf install ffmpeg latest && asdf global ffmpeg latest",
                 "windows": "choco install ffmpeg -y"
             },
             "type": "enable"
@@ -680,8 +707,8 @@
         "yt-dlp": {
             "description": "YouTube 影片下載 CLI 工具",
             "install": {
-                "linux": "sudo apt install yt-dlp -y",
-                "mac": "brew install yt-dlp",
+                "linux": "asdf plugin add yt-dlp && asdf install yt-dlp latest && asdf global yt-dlp latest",
+                "mac": "asdf plugin add yt-dlp && asdf install yt-dlp latest && asdf global yt-dlp latest",
                 "windows": "choco install yt-dlp -y"
             },
             "type": "enable"
