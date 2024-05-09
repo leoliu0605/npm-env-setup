@@ -83,17 +83,17 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 |------------------------------|----------------------------------------------------------------------------------------------------|------------|
 | Android Studio               | -                                                                                                  | disable    |
 | Beyond Compare               | 用來做檔案差異比較的 GUI 軟體                                                                      | **enable** |
+| CMake                        | 跨平台的建構系統產生工具                                                                           | disable    |
 | Cuda                         | 控制 NVIDIA GPU 的 CLI 工具                                                                        | disable    |
 | DevToys                      | 開發者工具集合，包含了許多常用的開發者工具                                                          | disable    |
 | Docker                       | 虛擬化容器工具，會同時安裝 docker & docker-compose                                                  | **enable** |
 | FileZilla                    | 免費的 FTP 用戶端軟體                                                                              | disable    |
 | Flutter                      | -                                                                                                  | disable    |
 | Git                          | -                                                                                                  | `force`    |
-| Golang                       | -                                                                                                  | disable    |
+| Golang                       | -                                                                                                  | **enable** |
 | ImageJ                       | 基於 Java 的圖像處理軟體                                                                           | **enable** |
 | KiCad                        | 繪製電路原理圖和印刷電路板設計的自由軟體                                                           | disable    |
 | LINQPad 7                    | 一款強大的 .NET 程式碼編輯器                                                                       | **enable** |
-| LazyDocker                   | 一個簡單的終端機使用者介面，適用於 docker 與 docker-compose                                         | **enable** |
 | Miniconda 3                  | -                                                                                                  | disable    |
 | MobaXTerm                    | 終端機工具，類似於 PuTTY                                                                            | **enable** |
 | Node.js                      | -                                                                                                  | `force`    |
@@ -107,19 +107,20 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | Sublime Text 4               | 高效、多功能的文本編輯器                                                                            | **enable** |
 | Tera Term                    | -                                                                                                  | disable    |
 | TypeScript                   | -                                                                                                  | **enable** |
-| VSCode Extension Development | VSCode 擴充套件開發工具                                                                            | disable    |
+| VSCode Extension Development | VSCode 擴充套件開發工具                                                                            | **enable** |
 | Virtual Box                  | 自由及開放原始碼的虛擬機器軟體                                                                     | **enable** |
 | Visual Studio 2022 Community | -                                                                                                  | disable    |
 | Visual Studio Code           | -                                                                                                  | **enable** |
-| act-cli                      | GitHub Actions 的 CLI 工具                                                                         | disable    |
+| act-cli                      | GitHub Actions 的本地模擬工具                                                                      | disable    |
 | commitizen                   | Git Commit 規範工具                                                                                | **enable** |
 | dotnet-sdk                   | -                                                                                                  | **enable** |
 | gcc                          | C / C++ 編譯器                                                                                     | **enable** |
-| gcc-arm-none-eabi            | ARM 編譯器 (推薦使用 Docker 以避免環境問題)                                                        | disable    |
+| gcc-arm-none-eabi            | ARM 編譯器                                                                                         | **enable** |
 | ilspy                        | C# 反編譯工具                                                                                      | **enable** |
+| lazydocker                   | 一個簡單的終端機使用者介面，適用於 docker 與 docker-compose                                         | **enable** |
 | make                         | -                                                                                                  | **enable** |
-| pyOCD                        | Python OpenOCD                                                                                     | disable    |
-| usbipd-win                   | USB over IP 的 Windows 版本                                                                        | disable    |
+| pyOCD                        | Python OpenOCD                                                                                     | **enable** |
+| usbipd-win                   | USB over IP 的 Windows 版本                                                                        | **enable** |
 | 7-Zip                        | 壓縮/解壓縮軟體                                                                                    | disable    |
 | Adobe Reader                 | PDF 閱讀器                                                                                         | **enable** |
 | Anydesk                      | 遠端桌面軟體                                                                                       | **enable** |
@@ -132,6 +133,7 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | Folder Size                  | 資料夾大小檢視工具                                                                                 | disable    |
 | Google Drive                 | -                                                                                                  | **enable** |
 | Hugo                         | 靜態網站產生器                                                                                     | **enable** |
+| ImageMagick                  | 圖像處理工具                                                                                       | **enable** |
 | Inkscape                     | 免費向量繪圖軟體，類似 Adobe Illustrator                                                            | disable    |
 | Keyviz                       | 按鍵可視化工具，它可以實時顯示用戶當前按下的按鍵。                                                   | **enable** |
 | Krita                        | 免費的數位繪圖軟體，類似 Adobe Photoshop                                                            | disable    |
@@ -159,12 +161,12 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 |------------------------------|----------------------------------------------------------------------------------------------------|------------|
 | Android Studio               | -                                                                                                  | disable    |
 | Beyond Compare               | 用來做檔案差異比較的 GUI 軟體                                                                      | **enable** |
+| CMake                        | 跨平台的建構系統產生工具                                                                           | disable    |
 | Docker                       | 虛擬化容器工具，會同時安裝 docker & docker-compose                                                  | **enable** |
 | Flutter                      | -                                                                                                  | disable    |
 | Git                          | -                                                                                                  | `force`    |
-| Golang                       | -                                                                                                  | disable    |
+| Golang                       | -                                                                                                  | **enable** |
 | KiCad                        | 繪製電路原理圖和印刷電路板設計的自由軟體                                                           | disable    |
-| LazyDocker                   | 一個簡單的終端機使用者介面，適用於 docker 與 docker-compose                                         | **enable** |
 | Node.js                      | -                                                                                                  | `force`    |
 | Pandoc                       | 文件轉換工具                                                                                       | **enable** |
 | PySide6                      | -                                                                                                  | disable    |
@@ -173,15 +175,17 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | Setuptools                   | Python tool that helps you easily download, build, install, upgrade, and uninstall Python packages | disable    |
 | Sourcetree                   | Git GUI 軟體                                                                                       | disable    |
 | TypeScript                   | -                                                                                                  | **enable** |
-| VSCode Extension Development | VSCode 擴充套件開發工具                                                                            | disable    |
+| VSCode Extension Development | VSCode 擴充套件開發工具                                                                            | **enable** |
 | Visual Studio Code           | -                                                                                                  | **enable** |
-| act-cli                      | GitHub Actions 的 CLI 工具                                                                         | disable    |
+| act-cli                      | GitHub Actions 的本地模擬工具                                                                      | disable    |
 | commitizen                   | Git Commit 規範工具                                                                                | **enable** |
 | dotnet-sdk                   | -                                                                                                  | **enable** |
-| gcc-arm-none-eabi            | ARM 編譯器 (推薦使用 Docker 以避免環境問題)                                                        | disable    |
+| gcc-arm-none-eabi            | ARM 編譯器                                                                                         | **enable** |
+| lazydocker                   | 一個簡單的終端機使用者介面，適用於 docker 與 docker-compose                                         | **enable** |
+| lazygit                      | 一個簡單的終端機使用者介面，適用於 git                                                              | **enable** |
 | make                         | -                                                                                                  | **enable** |
 | minicom                      | Linux/Unix 系統的終端機通訊程式                                                                    | **enable** |
-| pyOCD                        | Python OpenOCD                                                                                     | disable    |
+| pyOCD                        | Python OpenOCD                                                                                     | **enable** |
 | 7-Zip                        | 壓縮/解壓縮軟體                                                                                    | disable    |
 | Adobe Creative Cloud         | Adobe 軟體管理工具                                                                                 | **enable** |
 | Adobe Reader                 | PDF 閱讀器                                                                                         | **enable** |
@@ -190,6 +194,7 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | Fira Code                    | 好看的程式碼字型                                                                                   | `force`    |
 | Google Drive                 | -                                                                                                  | **enable** |
 | Hugo                         | 靜態網站產生器                                                                                     | **enable** |
+| ImageMagick                  | 圖像處理工具                                                                                       | **enable** |
 | Inkscape                     | 免費向量繪圖軟體，類似 Adobe Illustrator                                                            | disable    |
 | Krita                        | 免費的數位繪圖軟體，類似 Adobe Photoshop                                                            | disable    |
 | Logi Options+                | -                                                                                                  | disable    |
@@ -197,7 +202,6 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | Microsoft Edge               | -                                                                                                  | **enable** |
 | Notion                       | -                                                                                                  | disable    |
 | OBS Studio                   | 開源的串流軟體                                                                                     | **enable** |
-| PotPlayer                    | -                                                                                                  | **enable** |
 | Spotify                      | -                                                                                                  | **enable** |
 | Telegram                     | -                                                                                                  | **enable** |
 | The Unarchiver               | macOS 的壓縮/解壓縮軟體                                                                            | **enable** |
@@ -213,12 +217,12 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 
 | Package                      | Description                                                                                        | Default    |
 |------------------------------|----------------------------------------------------------------------------------------------------|------------|
+| CMake                        | 跨平台的建構系統產生工具                                                                           | disable    |
 | Docker                       | 虛擬化容器工具，會同時安裝 docker & docker-compose                                                  | **enable** |
 | Flutter                      | -                                                                                                  | disable    |
 | Git                          | -                                                                                                  | `force`    |
-| Golang                       | -                                                                                                  | disable    |
+| Golang                       | -                                                                                                  | **enable** |
 | KiCad                        | 繪製電路原理圖和印刷電路板設計的自由軟體                                                           | disable    |
-| LazyDocker                   | 一個簡單的終端機使用者介面，適用於 docker 與 docker-compose                                         | **enable** |
 | Node.js                      | -                                                                                                  | `force`    |
 | OpenSSH                      | -                                                                                                  | **enable** |
 | Pandoc                       | 文件轉換工具                                                                                       | **enable** |
@@ -227,14 +231,18 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | Rust                         | -                                                                                                  | `force`    |
 | Setuptools                   | Python tool that helps you easily download, build, install, upgrade, and uninstall Python packages | disable    |
 | TypeScript                   | -                                                                                                  | **enable** |
-| VSCode Extension Development | VSCode 擴充套件開發工具                                                                            | disable    |
+| VSCode Extension Development | VSCode 擴充套件開發工具                                                                            | **enable** |
+| act-cli                      | GitHub Actions 的本地模擬工具                                                                      | disable    |
 | commitizen                   | Git Commit 規範工具                                                                                | **enable** |
 | dotnet-sdk                   | -                                                                                                  | **enable** |
-| gcc-arm-none-eabi            | ARM 編譯器 (推薦使用 Docker 以避免環境問題)                                                        | disable    |
+| gcc-arm-none-eabi            | ARM 編譯器                                                                                         | **enable** |
+| lazydocker                   | 一個簡單的終端機使用者介面，適用於 docker 與 docker-compose                                         | **enable** |
+| lazygit                      | 一個簡單的終端機使用者介面，適用於 git                                                              | **enable** |
 | make                         | -                                                                                                  | **enable** |
 | minicom                      | Linux/Unix 系統的終端機通訊程式                                                                    | **enable** |
-| pyOCD                        | Python OpenOCD                                                                                     | disable    |
+| pyOCD                        | Python OpenOCD                                                                                     | **enable** |
 | Hugo                         | 靜態網站產生器                                                                                     | **enable** |
+| ImageMagick                  | 圖像處理工具                                                                                       | **enable** |
 | Inkscape                     | 免費向量繪圖軟體，類似 Adobe Illustrator                                                            | disable    |
 | Noto Sans CJK                | Google 開發的中文字型                                                                              | **enable** |
 | OBS Studio                   | 開源的串流軟體                                                                                     | **enable** |
