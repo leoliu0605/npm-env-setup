@@ -1,3 +1,12 @@
+## [1.2.1](https://github.com/leoli0605/npm-env-setup/compare/v1.2.0...v1.2.1) (2024-05-09)
+
+
+### Bug Fixes
+
+* fix function is not defined error ([955a701](https://github.com/leoli0605/npm-env-setup/commit/955a701c08d43d61555ad75a514cbb151d9e4c85))
+
+
+
 # [1.2.0](https://github.com/leoli0605/npm-env-setup/compare/v1.1.0...v1.2.0) (2024-05-09)
 
 
