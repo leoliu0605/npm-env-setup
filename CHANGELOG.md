@@ -1,3 +1,12 @@
+## [1.2.5](https://github.com/leoli0605/npm-env-setup/compare/v1.2.4...v1.2.5) (2024-05-15)
+
+
+### Bug Fixes
+
+* update cmake installation command for Windows, close [#20](https://github.com/leoli0605/npm-env-setup/issues/20) ([717e5b6](https://github.com/leoli0605/npm-env-setup/commit/717e5b6d56ef284f06ae9c6b09bfae561789c9b3))
+
+
+
 ## [1.2.4](https://github.com/leoli0605/npm-env-setup/compare/v1.2.3...v1.2.4) (2024-05-09)
 
 
