@@ -23,7 +23,7 @@
             "install": {
                 "linux": "asdf plugin add cmake && asdf install cmake latest && asdf global cmake latest",
                 "mac": "asdf plugin add cmake && asdf install cmake latest && asdf global cmake latest",
-                "windows": "choco install cmake -y"
+                "windows": "choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'"
             },
             "type": "disable"
         },
