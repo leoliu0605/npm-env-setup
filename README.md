@@ -122,7 +122,7 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | pyOCD                        | Python OpenOCD                                                                                     | **enable** |
 | usbipd-win                   | USB over IP 的 Windows 版本                                                                        | **enable** |
 | 7-Zip                        | 壓縮/解壓縮軟體                                                                                    | disable    |
-| Adobe Reader                 | PDF 閱讀器                                                                                         | **enable** |
+| Adobe Reader                 | PDF 閱讀器                                                                                         | disable    |
 | Anydesk                      | 遠端桌面軟體                                                                                       | **enable** |
 | Bandizip                     | 好看的壓縮程式                                                                                     | **enable** |
 | CPU-Z                        | CPU 資訊檢視工具                                                                                   | disable    |
@@ -140,7 +140,7 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | Mega Downloader              | Mega.nz 下載器                                                                                     | disable    |
 | Notion                       | -                                                                                                  | disable    |
 | OBS Studio                   | 開源的串流軟體                                                                                     | **enable** |
-| PDF24                        | PDF 處理軟體                                                                                       | **enable** |
+| PDF24                        | PDF 處理軟體                                                                                       | disable    |
 | PotPlayer                    | -                                                                                                  | **enable** |
 | PowerToys                    | Windows 10 / 11 的實用小工具                                                                       | **enable** |
 | QuickLook                    | 類似於 macOS 的快速預覽工具                                                                        | **enable** |
@@ -187,7 +187,7 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | pyOCD                        | Python OpenOCD                                                                                     | **enable** |
 | 7-Zip                        | 壓縮/解壓縮軟體                                                                                    | disable    |
 | Adobe Creative Cloud         | Adobe 軟體管理工具                                                                                 | **enable** |
-| Adobe Reader                 | PDF 閱讀器                                                                                         | **enable** |
+| Adobe Reader                 | PDF 閱讀器                                                                                         | disable    |
 | Anydesk                      | 遠端桌面軟體                                                                                       | **enable** |
 | Discord                      | -                                                                                                  | **enable** |
 | Fira Code                    | 好看的程式碼字型                                                                                   | `force`    |
