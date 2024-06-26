@@ -414,7 +414,7 @@
                 "mac": "brew install --cask adobe-acrobat-reader",
                 "windows": "choco install adobereader -y"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "Anydesk": {
             "description": "遠端桌面軟體",
@@ -603,7 +603,7 @@
                 "mac": "",
                 "windows": "choco install pdf24 -y"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "PotPlayer": {
             "description": "",
