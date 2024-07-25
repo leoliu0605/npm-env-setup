@@ -1,3 +1,12 @@
+# [1.3.0](https://github.com/leoli0605/npm-env-setup/compare/v1.2.5...v1.3.0) (2024-07-25)
+
+
+### Features
+
+* add new software entries for IINA, Ice, Rclone, and stats with installation instructions ([f27a208](https://github.com/leoli0605/npm-env-setup/commit/f27a2089d700ec8e02cda454c2c6baac0fd7bc27)), closes [#21](https://github.com/leoli0605/npm-env-setup/issues/21)
+
+
+
 ## [1.2.5](https://github.com/leoli0605/npm-env-setup/compare/v1.2.4...v1.2.5) (2024-05-15)
 
 
