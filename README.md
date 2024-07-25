@@ -147,7 +147,7 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | Revo Uninstaller             | Windows 的軟體卸載工具                                                                             | **enable** |
 | Spotify                      | -                                                                                                  | **enable** |
 | Telegram                     | -                                                                                                  | **enable** |
-| VLC                          | -                                                                                                  | **enable** |
+| VLC                          | -                                                                                                  | disable    |
 | ffmepg                       | 影片處理 CLI 工具                                                                                  | **enable** |
 | yt-dlp                       | YouTube 影片下載 CLI 工具                                                                          | **enable** |
 <!-- WINDOWS_LISTS_END -->
@@ -193,6 +193,8 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | Fira Code                    | 好看的程式碼字型                                                                                   | `force`    |
 | Google Drive                 | -                                                                                                  | **enable** |
 | Hugo                         | 靜態網站產生器                                                                                     | **enable** |
+| IINA                         | macOS 的影片播放器                                                                                 | **enable** |
+| Ice                          | Ice is a powerful menu bar management tool for macOS                                               | **enable** |
 | Inkscape                     | 免費向量繪圖軟體，類似 Adobe Illustrator                                                            | disable    |
 | Krita                        | 免費的數位繪圖軟體，類似 Adobe Photoshop                                                            | disable    |
 | Logi Options+                | -                                                                                                  | disable    |
@@ -200,11 +202,13 @@ Additionally, it sets up some useful programming tools and utilities, ensuring t
 | Microsoft Edge               | -                                                                                                  | **enable** |
 | Notion                       | -                                                                                                  | disable    |
 | OBS Studio                   | 開源的串流軟體                                                                                     | **enable** |
+| Rclone                       | 雲端檔案同步工具                                                                                   | disable    |
 | Spotify                      | -                                                                                                  | **enable** |
 | Telegram                     | -                                                                                                  | **enable** |
 | The Unarchiver               | macOS 的壓縮/解壓縮軟體                                                                            | **enable** |
-| VLC                          | -                                                                                                  | **enable** |
+| VLC                          | -                                                                                                  | disable    |
 | ffmepg                       | 影片處理 CLI 工具                                                                                  | **enable** |
+| stats                        | macOS system monitor in your menu bar                                                              | **enable** |
 | ttc-source-han-serif         | 思源宋體                                                                                           | **enable** |
 | yt-dlp                       | YouTube 影片下載 CLI 工具                                                                          | **enable** |
 <!-- MACOS_LISTS_END -->

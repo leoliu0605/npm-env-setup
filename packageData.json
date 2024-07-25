@@ -506,6 +506,24 @@
             },
             "type": "enable"
         },
+        "IINA": {
+            "description": "macOS 的影片播放器",
+            "install": {
+                "linux": "",
+                "mac": "brew install --cask iina",
+                "windows": ""
+            },
+            "type": "enable"
+        },
+        "Ice": {
+            "description": "Ice is a powerful menu bar management tool for macOS",
+            "install": {
+                "linux": "",
+                "mac": "brew install jordanbaird-ice",
+                "windows": ""
+            },
+            "type": "enable"
+        },
         "Inkscape": {
             "description": "免費向量繪圖軟體，類似 Adobe Illustrator",
             "install": {
@@ -632,6 +650,15 @@
             },
             "type": "enable"
         },
+        "Rclone": {
+            "description": "雲端檔案同步工具",
+            "install": {
+                "linux": "",
+                "mac": "brew install rclone",
+                "windows": ""
+            },
+            "type": "disable"
+        },
         "Revo Uninstaller": {
             "description": "Windows 的軟體卸載工具",
             "install": {
@@ -675,7 +702,7 @@
                 "mac": "brew install --cask vlc",
                 "windows": "choco install vlc -y"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "ffmepg": {
             "description": "影片處理 CLI 工具",
@@ -683,6 +710,15 @@
                 "linux": "asdf plugin add nasm && asdf install nasm latest && asdf global nasm latest && asdf plugin add ffmpeg && asdf install ffmpeg latest && asdf global ffmpeg latest",
                 "mac": "asdf plugin add nasm && asdf install nasm latest && asdf global nasm latest && asdf plugin add ffmpeg && asdf install ffmpeg latest && asdf global ffmpeg latest",
                 "windows": "choco install ffmpeg -y"
+            },
+            "type": "enable"
+        },
+        "stats": {
+            "description": "macOS system monitor in your menu bar",
+            "install": {
+                "linux": "",
+                "mac": "brew install stats",
+                "windows": ""
             },
             "type": "enable"
         },
