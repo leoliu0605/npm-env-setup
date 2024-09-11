@@ -135,6 +135,15 @@
             },
             "type": "enable"
         },
+        "Ninja": {
+            "description": "快速的 C / C++ 編譯工具",
+            "install": {
+                "linux": "asdf plugin add ninja && asdf install ninja latest && asdf global ninja latest",
+                "mac": "asdf plugin add ninja && asdf install ninja latest && asdf global ninja latest",
+                "windows": "winget install --id=Ninja-build.Ninja  -e"
+            },
+            "type": "enable"
+        },
         "Node.js": {
             "description": "",
             "install": {
