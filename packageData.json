@@ -21,9 +21,9 @@
         "CMake": {
             "description": "跨平台的建構系統產生工具",
             "install": {
-                "linux": "asdf plugin add cmake && asdf install cmake latest && asdf global cmake latest",
-                "mac": "asdf plugin add cmake && asdf install cmake latest && asdf global cmake latest",
-                "windows": "winget install --id=Kitware.CMake  -e"
+                "linux": "vfox add cmake && vfox install cmake@3.30.3 && vfox use -g cmake@3.30.3",
+                "mac": "vfox add cmake && vfox install cmake@3.30.3 && vfox use -g cmake@3.30.3",
+                "windows": "vfox add cmake ; vfox install cmake@3.30.3 ; vfox use -g cmake@3.30.3"
             },
             "type": "enable"
         },
@@ -66,9 +66,9 @@
         "Flutter": {
             "description": "",
             "install": {
-                "linux": "asdf plugin add flutter && asdf install flutter latest && asdf global flutter latest",
-                "mac": "asdf plugin add flutter && asdf install flutter latest && asdf global flutter latest",
-                "windows": "choco install flutter -y"
+                "linux": "vfox add flutter && vfox install flutter@3.24.2 && vfox use -g flutter@3.24.2",
+                "mac": "vfox add flutter && vfox install flutter@3.24.2 && vfox use -g flutter@3.24.2",
+                "windows": "vfox add flutter ; vfox install flutter@3.24.2 ; vfox use -g flutter@3.24.2"
             },
             "type": "disable"
         },
@@ -84,9 +84,9 @@
         "Golang": {
             "description": "",
             "install": {
-                "linux": "asdf plugin add golang && asdf install golang latest && asdf global golang latest",
-                "mac": "brew install coreutils && asdf plugin add golang && asdf install golang latest && asdf global golang latest",
-                "windows": "winget install --id=GoLang.Go  -e"
+                "linux": "vfox add golang && vfox install golang@1.23.1 && vfox use -g golang@1.23.1",
+                "mac": "brew install coreutils && vfox add golang && vfox install golang@1.23.1 && vfox use -g golang@1.23.1",
+                "windows": "vfox add golang ; vfox install golang@1.23.1 ; vfox use -g golang@1.23.1"
             },
             "type": "enable"
         },
@@ -148,10 +148,19 @@
             "description": "",
             "install": {
                 "linux": "echo 'This line will be replaced by the code to meet different versions of Ubuntu'",
-                "mac": "asdf plugin add nodejs && asdf install nodejs 18.18.0 && asdf global nodejs 18.18.0",
-                "windows": "winget install --id=OpenJS.NodeJS.LTS  -e"
+                "mac": "vfox add nodejs && vfox install nodejs@20.17.0 && vfox use -g nodejs@20.17.0",
+                "windows": "vfox add nodejs ; vfox install nodejs@20.17.0 ; vfox use -g nodejs@20.17.0"
             },
             "type": "force"
+        },
+        "OpenCommit": {
+            "description": "一個開源的 Git Commit AI 工具",
+            "install": {
+                "linux": "npm install -g opencommit",
+                "mac": "npm install -g opencommit",
+                "windows": "npm install -g opencommit"
+            },
+            "type": "enable"
         },
         "OpenSSH": {
             "description": "",
@@ -201,9 +210,9 @@
         "Python": {
             "description": "",
             "install": {
-                "linux": "asdf plugin add python && asdf install python 3.10.0 && asdf global python 3.10.0",
-                "mac": "asdf plugin add python && asdf install python 3.10.0 && asdf global python 3.10.0",
-                "windows": "winget install --id=Python.Python.3.10  -e"
+                "linux": "vfox add python && vfox install python@3.10.0 && vfox use -g python@3.10.0",
+                "mac": "vfox add python && vfox install python@3.10.0 && vfox use -g python@3.10.0",
+                "windows": "vfox add python ; vfox install python@3.10.0 ; vfox use -g python@3.10.0"
             },
             "type": "force"
         },
@@ -324,6 +333,15 @@
             },
             "type": "disable"
         },
+        "clang": {
+            "description": "C / C++ 編譯器",
+            "install": {
+                "linux": "vfox add clang && vfox install clang@18.1.8 && vfox use -g clang@18.1.8",
+                "mac": "vfox add clang && vfox install clang@18.1.8 && vfox use -g clang@18.1.8",
+                "windows": "vfox add clang ; vfox install clang@18.1.8 ; vfox use -g clang@18.1.8"
+            },
+            "type": "enable"
+        },
         "commitizen": {
             "description": "Git Commit 規範工具",
             "install": {
@@ -339,15 +357,6 @@
                 "linux": "curl -sSL https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh | bash && echo -e '\nexport PATH=\"$HOME/.dotnet:$PATH\"' >> ~/.bashrc && source ~/.bashrc",
                 "mac": "curl -sSL https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh | bash && echo -e '\nexport PATH=\"$HOME/.dotnet:$PATH\"' >> ~/.bashrc && source ~/.bashrc",
                 "windows": "Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass ; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.ps1'))"
-            },
-            "type": "enable"
-        },
-        "gcc": {
-            "description": "C / C++ 編譯器",
-            "install": {
-                "linux": "",
-                "mac": "",
-                "windows": "choco install mingw -y"
             },
             "type": "enable"
         },
@@ -442,15 +451,6 @@
                 "windows": ""
             },
             "type": "enable"
-        },
-        "Adobe Reader": {
-            "description": "PDF 閱讀器",
-            "install": {
-                "linux": "",
-                "mac": "brew install --cask adobe-acrobat-reader",
-                "windows": "winget install --id=Adobe.Acrobat.Reader.64-bit  -e"
-            },
-            "type": "disable"
         },
         "Anydesk": {
             "description": "遠端桌面軟體",
@@ -623,15 +623,6 @@
             },
             "type": "enable"
         },
-        "Notion": {
-            "description": "",
-            "install": {
-                "linux": "",
-                "mac": "brew install --cask notion",
-                "windows": "winget install --id=Notion.Notion  -e"
-            },
-            "type": "disable"
-        },
         "Noto Sans CJK": {
             "description": "Google 開發的中文字型",
             "install": {
@@ -649,15 +640,6 @@
                 "windows": "winget install --id=OBSProject.OBSStudio  -e"
             },
             "type": "enable"
-        },
-        "PDF24": {
-            "description": "PDF 處理軟體",
-            "install": {
-                "linux": "",
-                "mac": "",
-                "windows": "winget install --id=geeksoftwareGmbH.PDF24Creator  -e"
-            },
-            "type": "disable"
         },
         "PotPlayer": {
             "description": "",

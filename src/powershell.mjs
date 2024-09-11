@@ -8,6 +8,8 @@ const __dirname = getAppDir();
 class PowerShell extends BaseShell {
     constructor() {
         super();
+        this.scripts.push(fs.readFileSync(path.join(__dirname, 'scripts/windows/WinGet.ps1'), 'utf8') + '\n');
+        this.scripts.push(fs.readFileSync(path.join(__dirname, 'scripts/windows/Scoop.ps1'), 'utf8') + '\n');
         this.scripts.push(fs.readFileSync(path.join(__dirname, 'scripts/windows/RunAsAdministrator.ps1'), 'utf8') + '\n');
         this.scripts.push(fs.readFileSync(path.join(__dirname, 'scripts/windows/Chocolatey.ps1'), 'utf8') + '\n');
     }

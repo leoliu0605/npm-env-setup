@@ -38,9 +38,7 @@ class SetupManager {
     }
 
     setupEnvironment(selectedPackages) {
-        if (os.platform() !== 'win32') {
-            this.setupNonWindowsEnvironment();
-        }
+        this.setupVersionManager();
 
         selectedPackages.forEach((p) => {
             if (p) {
@@ -50,10 +48,10 @@ class SetupManager {
                         const isUbuntuVersion2X = /VERSION_ID="20\.\d+"|VERSION_ID="2[1-9]\.\d+"/.test(data) || /PRETTY_NAME="Ubuntu 20\.\d+.*"|PRETTY_NAME="Ubuntu 2[1-9]\.\d+.*"/.test(data);
                         if (isUbuntuVersion2X) {
                             console.log('Ubuntu 2x.xx is detected');
-                            p.installCommand = 'asdf plugin add nodejs && asdf install nodejs 18.18.0 && asdf global nodejs 18.18.0 && npm install -g pnpm@latest';
+                            p.installCommand = 'vfox add nodejs && vfox install nodejs@20.17.0 && vfox use -g nodejs@20.17.0 && npm install -g pnpm@latest';
                         } else {
                             console.log('Ubuntu 1x.xx is detected');
-                            p.installCommand = 'asdf plugin add nodejs && asdf install nodejs 16.20.2 && asdf global nodejs 16.20.2';
+                            p.installCommand = 'vfox add nodejs && vfox install nodejs@16.20.2 && vfox use -g nodejs@16.20.2';
                         }
                     }
                 }
@@ -70,12 +68,6 @@ class SetupManager {
             }
             this.shell.addCommand('python --version');
             this.shell.addCommand('pip --version');
-            /* Install Poetry */
-            const poetryInstallCommand = os.platform() === 'win32' ? '(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -' : 'asdf plugin add poetry && asdf install poetry latest && asdf global poetry latest';
-            this.shell.addCommand(poetryInstallCommand);
-            this.refreshEnvironment();
-            this.shell.addCommand('poetry --version');
-            this.shell.addCommand('poetry config virtualenvs.in-project true');
             this.shell.addCommand(fs.readFileSync(path.join(__dirname, 'scripts/pip.setup'), 'utf8').trim());
         }
 
@@ -105,18 +97,20 @@ class SetupManager {
         if (!this.isLinuxRunAsRoot()) this.shell.addCommand('npx @leoli0605/git-setup');
     }
 
-    setupNonWindowsEnvironment() {
-        if (os.platform() === 'darwin') {
-            this.shell.addCommand('brew install asdf');
-            this.shell.addEnvironment('". /opt/homebrew/opt/asdf/libexec/asdf.sh"');
+    setupVersionManager() {
+        if (os.platform() === 'win32') {
+            this.shell.addCommand('winget install --id=version-fox.vfox  -e');
+            this.shell.addCommand('if (-not (Test-Path -Path $PROFILE)) { New-Item -Type File -Path $PROFILE -Force }; Add-Content -Path $PROFILE -Value \'Invoke-Expression "$(vfox activate pwsh)"\'');
+        } else if (os.platform() === 'darwin') {
+            this.shell.addCommand('brew install vfox');
+            this.shell.addCommand('echo "" >> ~/.zshrc');
+            this.shell.addCommand('echo \'eval "$(vfox activate zsh)"\' >> ~/.zshrc');
         } else if (os.platform() === 'linux') {
-            if (fs.existsSync(path.join(os.homedir(), '.asdf'))) {
-                fs.rmSync(path.join(os.homedir(), '.asdf'), { recursive: true });
-            }
-            this.shell.addCommand('git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0');
-            this.shell.addEnvironment('\'. "$HOME/.asdf/asdf.sh"\'');
-            this.shell.addEnvironment('\'. "$HOME/.asdf/completions/asdf.bash"\'');
-            this.shell.addCommand('export PATH="$HOME/.asdf/bin:$HOME/.asdf/shims:$PATH"');
+            this.shell.addCommand('echo "deb [trusted=yes] https://apt.fury.io/versionfox/ /" | sudo tee /etc/apt/sources.list.d/versionfox.list');
+            this.shell.addCommand('sudo apt update');
+            this.shell.addCommand('sudo apt install vfox -y');
+            this.shell.addCommand('echo "" >> ~/.bashrc');
+            this.shell.addCommand('echo \'eval "$(vfox activate bash)"\' >> ~/.bashrc');
         }
         this.refreshEnvironment();
     }
