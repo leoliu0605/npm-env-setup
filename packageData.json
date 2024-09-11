@@ -95,7 +95,7 @@
             "install": {
                 "linux": "",
                 "mac": "",
-                "windows": "winget install --id=Fiji.ImageJ  -e"
+                "windows": "choco install imagej -y"
             },
             "type": "enable"
         },
@@ -194,7 +194,7 @@
             "install": {
                 "linux": "asdf plugin add rust && asdf install rust latest && asdf global rust latest",
                 "mac": "asdf plugin add rust && asdf install rust latest && asdf global rust latest",
-                "windows": "winget install --id=Rustlang.Rust.GNU  -e"
+                "windows": "choco install rust -y"
             },
             "type": "force"
         },
@@ -430,7 +430,7 @@
             "install": {
                 "linux": "",
                 "mac": "",
-                "windows": "winget install --id=Bandisoft.Bandizip  -e"
+                "windows": "choco install bandizip -y"
             },
             "type": "enable"
         },
@@ -466,7 +466,7 @@
             "install": {
                 "linux": "",
                 "mac": "",
-                "windows": "winget install --id=voidtools.Everything  -e"
+                "windows": "choco install everything -y"
             },
             "type": "enable"
         },
