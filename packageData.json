@@ -25,7 +25,7 @@
                 "mac": "asdf plugin add cmake && asdf install cmake latest && asdf global cmake latest",
                 "windows": "winget install --id=Kitware.CMake  -e"
             },
-            "type": "disable"
+            "type": "enable"
         },
         "Cuda": {
             "description": "控制 NVIDIA GPU 的 CLI 工具",
@@ -34,7 +34,7 @@
                 "mac": "",
                 "windows": "winget install --id=Nvidia.CUDA  -e"
             },
-            "type": "disable"
+            "type": "enable"
         },
         "DevToys": {
             "description": "開發者工具集合，包含了許多常用的開發者工具",
@@ -106,14 +106,14 @@
                 "mac": "brew install --cask kicad",
                 "windows": "winget install --id=KiCad.KiCad  -e"
             },
-            "type": "disable"
+            "type": "enable"
         },
-        "LINQPad 7": {
+        "LINQPad 8": {
             "description": "一款強大的 .NET 程式碼編輯器",
             "install": {
                 "linux": "",
                 "mac": "",
-                "windows": "winget install --id=LINQPad.LINQPad.7  -e"
+                "windows": "winget install --id=LINQPad.LINQPad.8  -e"
             },
             "type": "enable"
         },
@@ -159,6 +159,15 @@
                 "linux": "asdf plugin add pandoc && asdf install pandoc latest && asdf global pandoc latest && asdf plugin add tinytex && asdf install tinytex latest && asdf global tinytex latest",
                 "mac": "asdf plugin add pandoc && asdf install pandoc latest && asdf global pandoc latest && asdf plugin add tinytex && asdf install tinytex latest && asdf global tinytex latest",
                 "windows": "winget install --id=JohnMacFarlane.Pandoc  -e ; winget install --id=MiKTeX.MiKTeX  -e"
+            },
+            "type": "enable"
+        },
+        "PowerShell": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "winget install --id=Microsoft.PowerShell  -e"
             },
             "type": "enable"
         },
@@ -243,6 +252,24 @@
             },
             "type": "enable"
         },
+        "USB Device Tree Viewer": {
+            "description": "USB 設備樹狀圖檢視工具",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "scoop bucket add 404NetworkError https://github.com/404NetworkError/scoop-bucket ; scoop install 404NetworkError/usbtreeview"
+            },
+            "type": "enable"
+        },
+        "VMware Workstation Pro": {
+            "description": "虛擬機器軟體",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "winget install -e --id VMware.WorkstationPro"
+            },
+            "type": "enable"
+        },
         "VSCode Extension Development": {
             "description": "VSCode 擴充套件開發工具",
             "install": {
@@ -259,7 +286,7 @@
                 "mac": "",
                 "windows": "winget install --id=Oracle.VirtualBox  -e"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "Visual Studio 2022 Community": {
             "description": "",
@@ -340,7 +367,7 @@
                 "mac": "asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git && asdf install lazydocker latest && asdf global lazydocker latest",
                 "windows": "winget install --id=JesseDuffield.Lazydocker  -e"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "lazygit": {
             "description": "一個簡單的終端機使用者介面，適用於 git",
@@ -349,7 +376,7 @@
                 "mac": "asdf plugin add lazygit && asdf install lazygit latest && asdf global lazygit latest",
                 "windows": "winget install --id=JesseDuffield.lazygit  -e"
             },
-            "type": "enable"
+            "type": "disable"
         },
         "make": {
             "description": "",
@@ -448,7 +475,7 @@
             "install": {
                 "linux": "",
                 "mac": "",
-                "windows": "winget install --id=CrystalDewWorld.CrystalDiskInfo  -e"
+                "windows": "winget install --id=qBittorrent.qBittorrent  -e"
             },
             "type": "disable"
         },
@@ -576,7 +603,7 @@
                 "mac": "",
                 "windows": "choco install megadownloader -y"
             },
-            "type": "disable"
+            "type": "enable"
         },
         "Microsoft Edge": {
             "description": "",
@@ -673,7 +700,7 @@
             "install": {
                 "linux": "",
                 "mac": "brew install --cask spotify",
-                "windows": "winget install --id=Spotify.Spotify  -e"
+                "windows": ""
             },
             "type": "enable"
         },
@@ -695,6 +722,15 @@
             },
             "type": "enable"
         },
+        "UniGetUI": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "winget install --id=SomePythonThings.WingetUIStore  -e"
+            },
+            "type": "enable"
+        },
         "VLC": {
             "description": "",
             "install": {
@@ -704,12 +740,30 @@
             },
             "type": "disable"
         },
+        "Wondershare PDFelement": {
+            "description": "PDF 編輯軟體",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "winget install --id=Wondershare.PDFelement.11  -e"
+            },
+            "type": "enable"
+        },
         "ffmepg": {
             "description": "影片處理 CLI 工具",
             "install": {
                 "linux": "asdf plugin add nasm && asdf install nasm latest && asdf global nasm latest && asdf plugin add ffmpeg && asdf install ffmpeg latest && asdf global ffmpeg latest",
                 "mac": "asdf plugin add nasm && asdf install nasm latest && asdf global nasm latest && asdf plugin add ffmpeg && asdf install ffmpeg latest && asdf global ffmpeg latest",
                 "windows": "winget install --id=Gyan.FFmpeg  -e"
+            },
+            "type": "enable"
+        },
+        "qBittorrent": {
+            "description": "免費的 BitTorrent 客戶端",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "winget install --id=qBittorrent.qBittorrent  -e"
             },
             "type": "enable"
         },
