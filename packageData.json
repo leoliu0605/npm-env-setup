@@ -484,7 +484,7 @@
             "install": {
                 "linux": "",
                 "mac": "",
-                "windows": "winget install --id=qBittorrent.qBittorrent  -e"
+                "windows": "winget install --id=CrystalDewWorld.CrystalDiskMark  -e"
             },
             "type": "disable"
         },
