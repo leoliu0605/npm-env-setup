@@ -538,7 +538,7 @@
             "install": {
                 "linux": "",
                 "mac": "",
-                "windows": "winget install --id=Brio.FolderSize  -e"
+                "windows": "winget install --id=Bazwise.FolderSizeExplorer  -e"
             },
             "type": "disable"
         },
