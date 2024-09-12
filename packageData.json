@@ -248,7 +248,7 @@
             "install": {
                 "linux": "",
                 "mac": "",
-                "windows": "winget install --id=SublimeHQ.SublimeText.4  -e"
+                "windows": "winget install --id=SublimeHQ.SublimeText.4.Portable  -e"
             },
             "type": "enable"
         },
