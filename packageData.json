@@ -324,6 +324,15 @@
             },
             "type": "enable"
         },
+        "Wireshark": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "winget install --id=WiresharkFoundation.Wireshark  -e"
+            },
+            "type": "disable"
+        },
         "act-cli": {
             "description": "GitHub Actions 的本地模擬工具",
             "install": {
@@ -423,15 +432,6 @@
             },
             "type": "enable"
         },
-        "Wireshark": {
-            "description": "",
-            "install": {
-                "linux": "",
-                "mac": "",
-                "windows": "winget install --id=WiresharkFoundation.Wireshark  -e"
-            },
-            "type": "disable"
-        },
         "usbipd-win": {
             "description": "USB over IP 的 Windows 版本",
             "install": {
@@ -449,15 +449,6 @@
                 "linux": "",
                 "mac": "brew install p7zip",
                 "windows": "winget install --id=7zip.7zip  -e"
-            },
-            "type": "disable"
-        },
-        "Resilio Sync": {
-            "description": "",
-            "install": {
-                "linux": "",
-                "mac": "",
-                "windows": "winget install --id=Resilio.ResilioSync  -e"
             },
             "type": "disable"
         },
@@ -692,6 +683,15 @@
                 "linux": "",
                 "mac": "brew install rclone",
                 "windows": ""
+            },
+            "type": "disable"
+        },
+        "Resilio Sync": {
+            "description": "",
+            "install": {
+                "linux": "",
+                "mac": "",
+                "windows": "winget install --id=Resilio.ResilioSync  -e"
             },
             "type": "disable"
         },
