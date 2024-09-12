@@ -363,9 +363,9 @@
         "dotnet-sdk": {
             "description": "",
             "install": {
-                "linux": "curl -sSL https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh | bash && echo -e '\nexport PATH=\"$HOME/.dotnet:$PATH\"' >> ~/.bashrc && source ~/.bashrc",
-                "mac": "curl -sSL https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh | bash && echo -e '\nexport PATH=\"$HOME/.dotnet:$PATH\"' >> ~/.bashrc && source ~/.bashrc",
-                "windows": "Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass ; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.ps1'))"
+                "linux": "vfox add dotnet && vfox install dotnet@8.0.8 && vfox use -g dotnet@8.0.8",
+                "mac": "vfox add dotnet && vfox install dotnet@8.0.8 && vfox use -g dotnet@8.0.8",
+                "windows": "vfox add dotnet ; vfox install dotnet@8.0.8 ; vfox use -g dotnet@8.0.8"
             },
             "type": "enable"
         },
